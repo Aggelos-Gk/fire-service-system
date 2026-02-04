@@ -1,0 +1,299 @@
+/* TRAVEL PAGE SPECIFIC STYLES ONLY */
+
+/* MAIN CONTENT */
+main.travel-content {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.page-title {
+  font-family: "Playfair Display", serif;
+  font-size: 42px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.95);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.page-subtitle {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin-bottom: 50px;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* TRAVEL CONTAINER - Smaller container */
+.travel-container {
+  width: 100%;
+  max-width: 900px; /* Reduced from 900px */
+  margin: 0 auto;
+  position: relative;
+}
+
+/* TRAVEL CARD - Smaller box like in about.css */
+.travel-card {
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 50px 60px; /* Reduced padding (was 60px 70px) */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.travel-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+}
+
+/* TRAVEL INTRO */
+.travel-intro {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.travel-message {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.travel-submessage {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* HOTELS GRID - Box layout like events page */
+.hotels-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* 2 columns */
+  gap: 30px;
+  margin: 40px 0;
+}
+
+/* HOTEL ITEM - Box styling */
+.hotel-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 30px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Make all boxes same height */
+}
+
+.hotel-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Add a subtle top accent on hover */
+.hotel-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e8c39e, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hotel-item:hover::before {
+  opacity: 1;
+}
+
+/* HOTEL TITLE */
+.hotel-title {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 20px;
+  text-align: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* HOTEL DETAILS - Flex to push link to bottom */
+.hotel-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HOTEL LIST - Simple bullet points */
+.hotel-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.hotel-list li {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin-bottom: 12px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.hotel-list li:before {
+  content: "•";
+  color: #e8c39e;
+  font-size: 20px;
+  position: absolute;
+  left: 0;
+}
+
+/* IMPORTANT NOTE */
+.hotel-important {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(232, 195, 158, 0.05);
+  padding: 10px 15px;
+  border-radius: 6px;
+  border-left: 3px solid #e8c39e;
+}
+
+/* RATES LIST */
+.hotel-rates {
+  list-style: none;
+  padding-left: 40px;
+  margin: 15px 0 20px;
+}
+
+.hotel-rates li {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.hotel-rates li:before {
+  content: "–";
+  color: #e8c39e;
+  position: absolute;
+  left: -20px;
+}
+
+/* HOTEL NOTE */
+.hotel-note {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  margin: 15px 0 20px;
+  padding-left: 20px;
+}
+
+/* HOTEL LINK - Position at bottom of box */
+.hotel-link {
+  display: inline-block;
+  color: #e8c39e;
+  text-decoration: none;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-size: 16px;
+  margin-top: auto; /* Pushes to bottom */
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.hotel-link:hover {
+  color: #fff;
+  border-top-color: rgba(232, 195, 158, 0.3);
+  padding-right: 5px;
+}
+
+/* TRAVEL NOTE */
+.travel-note {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.note-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* HIGHLIGHT TEXT */
+.highlight {
+  color: #e8c39e;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* TRAVEL PAGE RESPONSIVE */
+@media (max-width: 900px) {
+  .travel-card { 
+    padding: 40px 30px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .page-title { font-size: 36px; }
+  .travel-card { 
+    padding: 30px 20px;
+
+  }
+  .hotel-item { padding: 25px; }
+  .hotels-grid { 
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title { font-size: 30px; }
+  .travel-card { 
+    padding: 25px 15px;
+
+  }
+  .hotel-item { padding: 20px; }
+  .hotel-title { font-size: 22px; }
+}

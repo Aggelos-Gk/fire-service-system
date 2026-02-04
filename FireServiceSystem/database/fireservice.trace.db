@@ -1,0 +1,1268 @@
+2026-01-30 19:30:56.078520+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS users ([*]"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS users ( [42001-224]
+2026-01-30 19:30:56.080519+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-224]
+2026-01-30 19:30:56.080519+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username VARCHAR(50) UNIQUE NOT NULL,"; expected "UPDATE"; SQL statement:
+username VARCHAR(50) UNIQUE NOT NULL, [42001-224]
+2026-01-30 19:30:56.081519+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password VARCHAR(255) NOT NULL,"; expected "PREPARE"; SQL statement:
+password VARCHAR(255) NOT NULL, [42001-224]
+2026-01-30 19:30:56.081519+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')),"; expected "UPDATE"; SQL statement:
+user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')), [42001-224]
+2026-01-30 19:30:56.081519+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate DATE,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate DATE, [42001-224]
+2026-01-30 19:30:56.082519+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender VARCHAR(10),"; expected "GRANT"; SQL statement:
+gender VARCHAR(10), [42001-224]
+2026-01-30 19:30:56.082519+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country VARCHAR(100),"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country VARCHAR(100), [42001-224]
+2026-01-30 19:30:56.082519+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality VARCHAR(100),"; expected "MERGE"; SQL statement:
+municipality VARCHAR(100), [42001-224]
+2026-01-30 19:30:56.082519+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address TEXT,"; expected "ALTER, ANALYZE"; SQL statement:
+address TEXT, [42001-224]
+2026-01-30 19:30:56.083519+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job VARCHAR(100),"; SQL statement:
+job VARCHAR(100), [42000-224]
+2026-01-30 19:30:56.083519+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat DECIMAL(10, 8),"; SQL statement:
+lat DECIMAL(10, 8), [42000-224]
+2026-01-30 19:30:56.083519+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon DECIMAL(11, 8),"; SQL statement:
+lon DECIMAL(11, 8), [42000-224]
+2026-01-30 19:30:56.083519+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, [42001-224]
+2026-01-30 19:30:56.084520+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"; expected "UPDATE"; SQL statement:
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP [42001-224]
+2026-01-30 19:30:56.084520+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:30:56.084520+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users ( [42104-224]
+2026-01-30 19:30:56.085528+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username,"; expected "UPDATE"; SQL statement:
+username, [42001-224]
+2026-01-30 19:30:56.085528+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password,"; expected "PREPARE"; SQL statement:
+password, [42001-224]
+2026-01-30 19:30:56.085528+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type,"; expected "UPDATE"; SQL statement:
+user_type, [42001-224]
+2026-01-30 19:30:56.085528+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate, [42001-224]
+2026-01-30 19:30:56.086529+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender,"; expected "GRANT"; SQL statement:
+gender, [42001-224]
+2026-01-30 19:30:56.086529+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country, [42001-224]
+2026-01-30 19:30:56.086529+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality,"; expected "MERGE"; SQL statement:
+municipality, [42001-224]
+2026-01-30 19:30:56.086529+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address,"; expected "ALTER, ANALYZE"; SQL statement:
+address, [42001-224]
+2026-01-30 19:30:56.086529+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job,"; SQL statement:
+job, [42000-224]
+2026-01-30 19:30:56.087529+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat,"; SQL statement:
+lat, [42000-224]
+2026-01-30 19:30:56.087529+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon"; SQL statement:
+lon [42000-224]
+2026-01-30 19:30:56.087529+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:30:56.099528+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:30:56.099528+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin123!',"; SQL statement:
+'admin123!', [42000-224]
+2026-01-30 19:30:56.100590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'ADMIN',"; SQL statement:
+'ADMIN', [42000-224]
+2026-01-30 19:30:56.100590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'1990-01-15',"; SQL statement:
+'1990-01-15', [42000-224]
+2026-01-30 19:30:56.100590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'MALE',"; SQL statement:
+'MALE', [42000-224]
+2026-01-30 19:30:56.100590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Greece',"; SQL statement:
+'Greece', [42000-224]
+2026-01-30 19:30:56.100590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Athens',"; SQL statement:
+'Athens', [42000-224]
+2026-01-30 19:30:56.100590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'123 Main Street, Athens 10434',"; SQL statement:
+'123 Main Street, Athens 10434', [42000-224]
+2026-01-30 19:30:56.100590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'System Administrator',"; SQL statement:
+'System Administrator', [42000-224]
+2026-01-30 19:30:56.101590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]37.983810,"; SQL statement:
+37.983810, [42000-224]
+2026-01-30 19:30:56.101590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]23.727539"; SQL statement:
+23.727539 [42000-224]
+2026-01-30 19:30:56.102590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin')"; SQL statement:
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin') [42000-224]
+2026-01-30 19:30:56.103592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS users ([*]"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS users ( [42001-224]
+2026-01-30 19:30:56.103592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-224]
+2026-01-30 19:30:56.103592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username VARCHAR(50) UNIQUE NOT NULL,"; expected "UPDATE"; SQL statement:
+username VARCHAR(50) UNIQUE NOT NULL, [42001-224]
+2026-01-30 19:30:56.104591+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password VARCHAR(255) NOT NULL,"; expected "PREPARE"; SQL statement:
+password VARCHAR(255) NOT NULL, [42001-224]
+2026-01-30 19:30:56.104591+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')),"; expected "UPDATE"; SQL statement:
+user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')), [42001-224]
+2026-01-30 19:30:56.104591+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate DATE,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate DATE, [42001-224]
+2026-01-30 19:30:56.104591+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender VARCHAR(10),"; expected "GRANT"; SQL statement:
+gender VARCHAR(10), [42001-224]
+2026-01-30 19:30:56.104591+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country VARCHAR(100),"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country VARCHAR(100), [42001-224]
+2026-01-30 19:30:56.104591+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality VARCHAR(100),"; expected "MERGE"; SQL statement:
+municipality VARCHAR(100), [42001-224]
+2026-01-30 19:30:56.105590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address TEXT,"; expected "ALTER, ANALYZE"; SQL statement:
+address TEXT, [42001-224]
+2026-01-30 19:30:56.105590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job VARCHAR(100),"; SQL statement:
+job VARCHAR(100), [42000-224]
+2026-01-30 19:30:56.105590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat DECIMAL(10, 8),"; SQL statement:
+lat DECIMAL(10, 8), [42000-224]
+2026-01-30 19:30:56.105590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon DECIMAL(11, 8),"; SQL statement:
+lon DECIMAL(11, 8), [42000-224]
+2026-01-30 19:30:56.105590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, [42001-224]
+2026-01-30 19:30:56.105590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"; expected "UPDATE"; SQL statement:
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP [42001-224]
+2026-01-30 19:30:56.105590+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:30:56.106593+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+INSERT INTO users ( [42104-224]
+2026-01-30 19:30:56.106593+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username,"; expected "UPDATE"; SQL statement:
+username, [42001-224]
+2026-01-30 19:30:56.106593+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password,"; expected "PREPARE"; SQL statement:
+password, [42001-224]
+2026-01-30 19:30:56.106593+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type,"; expected "UPDATE"; SQL statement:
+user_type, [42001-224]
+2026-01-30 19:30:56.106593+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate, [42001-224]
+2026-01-30 19:30:56.106593+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender,"; expected "GRANT"; SQL statement:
+gender, [42001-224]
+2026-01-30 19:30:56.106593+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country, [42001-224]
+2026-01-30 19:30:56.107592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality,"; expected "MERGE"; SQL statement:
+municipality, [42001-224]
+2026-01-30 19:30:56.107592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address,"; expected "ALTER, ANALYZE"; SQL statement:
+address, [42001-224]
+2026-01-30 19:30:56.107592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job,"; SQL statement:
+job, [42000-224]
+2026-01-30 19:30:56.107592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat,"; SQL statement:
+lat, [42000-224]
+2026-01-30 19:30:56.107592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon"; SQL statement:
+lon [42000-224]
+2026-01-30 19:30:56.107592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:30:56.108592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:30:56.108592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin123!',"; SQL statement:
+'admin123!', [42000-224]
+2026-01-30 19:30:56.108592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'ADMIN',"; SQL statement:
+'ADMIN', [42000-224]
+2026-01-30 19:30:56.108592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'1990-01-15',"; SQL statement:
+'1990-01-15', [42000-224]
+2026-01-30 19:30:56.108592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'MALE',"; SQL statement:
+'MALE', [42000-224]
+2026-01-30 19:30:56.108592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Greece',"; SQL statement:
+'Greece', [42000-224]
+2026-01-30 19:30:56.108592+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Athens',"; SQL statement:
+'Athens', [42000-224]
+2026-01-30 19:30:56.109591+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'123 Main Street, Athens 10434',"; SQL statement:
+'123 Main Street, Athens 10434', [42000-224]
+2026-01-30 19:30:56.109591+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'System Administrator',"; SQL statement:
+'System Administrator', [42000-224]
+2026-01-30 19:30:56.109591+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]37.983810,"; SQL statement:
+37.983810, [42000-224]
+2026-01-30 19:30:56.109591+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]23.727539"; SQL statement:
+23.727539 [42000-224]
+2026-01-30 19:30:56.109591+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin')"; SQL statement:
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin') [42000-224]
+2026-01-30 19:33:14.000020+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS users ([*]"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS users ( [42001-224]
+2026-01-30 19:33:14.018510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-224]
+2026-01-30 19:33:14.018510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username VARCHAR(50) UNIQUE NOT NULL,"; expected "UPDATE"; SQL statement:
+username VARCHAR(50) UNIQUE NOT NULL, [42001-224]
+2026-01-30 19:33:14.018510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password VARCHAR(255) NOT NULL,"; expected "PREPARE"; SQL statement:
+password VARCHAR(255) NOT NULL, [42001-224]
+2026-01-30 19:33:14.018510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')),"; expected "UPDATE"; SQL statement:
+user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')), [42001-224]
+2026-01-30 19:33:14.019511+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate DATE,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate DATE, [42001-224]
+2026-01-30 19:33:14.019511+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender VARCHAR(10),"; expected "GRANT"; SQL statement:
+gender VARCHAR(10), [42001-224]
+2026-01-30 19:33:14.019511+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country VARCHAR(100),"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country VARCHAR(100), [42001-224]
+2026-01-30 19:33:14.019511+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality VARCHAR(100),"; expected "MERGE"; SQL statement:
+municipality VARCHAR(100), [42001-224]
+2026-01-30 19:33:14.019511+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address TEXT,"; expected "ALTER, ANALYZE"; SQL statement:
+address TEXT, [42001-224]
+2026-01-30 19:33:14.019511+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job VARCHAR(100),"; SQL statement:
+job VARCHAR(100), [42000-224]
+2026-01-30 19:33:14.019511+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat DECIMAL(10, 8),"; SQL statement:
+lat DECIMAL(10, 8), [42000-224]
+2026-01-30 19:33:14.020510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon DECIMAL(11, 8),"; SQL statement:
+lon DECIMAL(11, 8), [42000-224]
+2026-01-30 19:33:14.020510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, [42001-224]
+2026-01-30 19:33:14.020510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"; expected "UPDATE"; SQL statement:
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP [42001-224]
+2026-01-30 19:33:14.020510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:33:14.022509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO users ([*]"; expected "identifier"; SQL statement:
+INSERT INTO users ( [42001-224]
+2026-01-30 19:33:14.022509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username,"; expected "UPDATE"; SQL statement:
+username, [42001-224]
+2026-01-30 19:33:14.022509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password,"; expected "PREPARE"; SQL statement:
+password, [42001-224]
+2026-01-30 19:33:14.022509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type,"; expected "UPDATE"; SQL statement:
+user_type, [42001-224]
+2026-01-30 19:33:14.022509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate, [42001-224]
+2026-01-30 19:33:14.022509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender,"; expected "GRANT"; SQL statement:
+gender, [42001-224]
+2026-01-30 19:33:14.022509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country, [42001-224]
+2026-01-30 19:33:14.023510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality,"; expected "MERGE"; SQL statement:
+municipality, [42001-224]
+2026-01-30 19:33:14.023510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address,"; expected "ALTER, ANALYZE"; SQL statement:
+address, [42001-224]
+2026-01-30 19:33:14.023510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job,"; SQL statement:
+job, [42000-224]
+2026-01-30 19:33:14.023510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat,"; SQL statement:
+lat, [42000-224]
+2026-01-30 19:33:14.023510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon"; SQL statement:
+lon [42000-224]
+2026-01-30 19:33:14.023510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:33:14.035508+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:33:14.036509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin123!',"; SQL statement:
+'admin123!', [42000-224]
+2026-01-30 19:33:14.036509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:33:14.036509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'1990-01-15',"; SQL statement:
+'1990-01-15', [42000-224]
+2026-01-30 19:33:14.036509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'MALE',"; SQL statement:
+'MALE', [42000-224]
+2026-01-30 19:33:14.036509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Greece',"; SQL statement:
+'Greece', [42000-224]
+2026-01-30 19:33:14.036509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Athens',"; SQL statement:
+'Athens', [42000-224]
+2026-01-30 19:33:14.037509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'123 Main Street, Athens 10434',"; SQL statement:
+'123 Main Street, Athens 10434', [42000-224]
+2026-01-30 19:33:14.037509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'System Administrator',"; SQL statement:
+'System Administrator', [42000-224]
+2026-01-30 19:33:14.038509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]37.983810,"; SQL statement:
+37.983810, [42000-224]
+2026-01-30 19:33:14.038509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]23.727539"; SQL statement:
+23.727539 [42000-224]
+2026-01-30 19:33:14.038509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin')"; SQL statement:
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin') [42000-224]
+2026-01-30 19:33:14.040508+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS users ([*]"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS users ( [42001-224]
+2026-01-30 19:33:14.040508+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-224]
+2026-01-30 19:33:14.040508+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username VARCHAR(50) UNIQUE NOT NULL,"; expected "UPDATE"; SQL statement:
+username VARCHAR(50) UNIQUE NOT NULL, [42001-224]
+2026-01-30 19:33:14.040508+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password VARCHAR(255) NOT NULL,"; expected "PREPARE"; SQL statement:
+password VARCHAR(255) NOT NULL, [42001-224]
+2026-01-30 19:33:14.041509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')),"; expected "UPDATE"; SQL statement:
+user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')), [42001-224]
+2026-01-30 19:33:14.041509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate DATE,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate DATE, [42001-224]
+2026-01-30 19:33:14.041509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender VARCHAR(10),"; expected "GRANT"; SQL statement:
+gender VARCHAR(10), [42001-224]
+2026-01-30 19:33:14.041509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country VARCHAR(100),"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country VARCHAR(100), [42001-224]
+2026-01-30 19:33:14.041509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality VARCHAR(100),"; expected "MERGE"; SQL statement:
+municipality VARCHAR(100), [42001-224]
+2026-01-30 19:33:14.041509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address TEXT,"; expected "ALTER, ANALYZE"; SQL statement:
+address TEXT, [42001-224]
+2026-01-30 19:33:14.041509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job VARCHAR(100),"; SQL statement:
+job VARCHAR(100), [42000-224]
+2026-01-30 19:33:14.042510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat DECIMAL(10, 8),"; SQL statement:
+lat DECIMAL(10, 8), [42000-224]
+2026-01-30 19:33:14.042510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon DECIMAL(11, 8),"; SQL statement:
+lon DECIMAL(11, 8), [42000-224]
+2026-01-30 19:33:14.042510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, [42001-224]
+2026-01-30 19:33:14.042510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"; expected "UPDATE"; SQL statement:
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP [42001-224]
+2026-01-30 19:33:14.042510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:33:14.042510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO users ([*]"; expected "identifier"; SQL statement:
+INSERT INTO users ( [42001-224]
+2026-01-30 19:33:14.042510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username,"; expected "UPDATE"; SQL statement:
+username, [42001-224]
+2026-01-30 19:33:14.042510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password,"; expected "PREPARE"; SQL statement:
+password, [42001-224]
+2026-01-30 19:33:14.043509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type,"; expected "UPDATE"; SQL statement:
+user_type, [42001-224]
+2026-01-30 19:33:14.043509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate, [42001-224]
+2026-01-30 19:33:14.043509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender,"; expected "GRANT"; SQL statement:
+gender, [42001-224]
+2026-01-30 19:33:14.043509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country, [42001-224]
+2026-01-30 19:33:14.043509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality,"; expected "MERGE"; SQL statement:
+municipality, [42001-224]
+2026-01-30 19:33:14.043509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address,"; expected "ALTER, ANALYZE"; SQL statement:
+address, [42001-224]
+2026-01-30 19:33:14.043509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job,"; SQL statement:
+job, [42000-224]
+2026-01-30 19:33:14.043509+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat,"; SQL statement:
+lat, [42000-224]
+2026-01-30 19:33:14.044510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon"; SQL statement:
+lon [42000-224]
+2026-01-30 19:33:14.044510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:33:14.044510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:33:14.044510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin123!',"; SQL statement:
+'admin123!', [42000-224]
+2026-01-30 19:33:14.045511+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:33:14.045511+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'1990-01-15',"; SQL statement:
+'1990-01-15', [42000-224]
+2026-01-30 19:33:14.045511+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'MALE',"; SQL statement:
+'MALE', [42000-224]
+2026-01-30 19:33:14.045511+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Greece',"; SQL statement:
+'Greece', [42000-224]
+2026-01-30 19:33:14.045511+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Athens',"; SQL statement:
+'Athens', [42000-224]
+2026-01-30 19:33:14.045511+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'123 Main Street, Athens 10434',"; SQL statement:
+'123 Main Street, Athens 10434', [42000-224]
+2026-01-30 19:33:14.045511+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'System Administrator',"; SQL statement:
+'System Administrator', [42000-224]
+2026-01-30 19:33:14.045511+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]37.983810,"; SQL statement:
+37.983810, [42000-224]
+2026-01-30 19:33:14.046510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]23.727539"; SQL statement:
+23.727539 [42000-224]
+2026-01-30 19:33:14.046510+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin')"; SQL statement:
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin') [42000-224]
+2026-01-30 19:39:30.869525+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]USERS"; expected "UPDATE"; SQL statement:
+USERS [42001-224]
+2026-01-30 19:39:53.079974+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FROM [*]USER SUSERNAME"; expected "identifier"; SQL statement:
+SELECT FROM USER SUSERNAME [42001-224]
+2026-01-30 19:41:41.754647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS users ([*]"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS users ( [42001-224]
+2026-01-30 19:41:41.774646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-224]
+2026-01-30 19:41:41.774646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username VARCHAR(50) UNIQUE NOT NULL,"; expected "UPDATE"; SQL statement:
+username VARCHAR(50) UNIQUE NOT NULL, [42001-224]
+2026-01-30 19:41:41.774646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password VARCHAR(255) NOT NULL,"; expected "PREPARE"; SQL statement:
+password VARCHAR(255) NOT NULL, [42001-224]
+2026-01-30 19:41:41.774646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')),"; expected "UPDATE"; SQL statement:
+user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')), [42001-224]
+2026-01-30 19:41:41.774646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate DATE,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate DATE, [42001-224]
+2026-01-30 19:41:41.775647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender VARCHAR(10),"; expected "GRANT"; SQL statement:
+gender VARCHAR(10), [42001-224]
+2026-01-30 19:41:41.775647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country VARCHAR(100),"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country VARCHAR(100), [42001-224]
+2026-01-30 19:41:41.775647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality VARCHAR(100),"; expected "MERGE"; SQL statement:
+municipality VARCHAR(100), [42001-224]
+2026-01-30 19:41:41.775647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address TEXT,"; expected "ALTER, ANALYZE"; SQL statement:
+address TEXT, [42001-224]
+2026-01-30 19:41:41.775647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job VARCHAR(100),"; SQL statement:
+job VARCHAR(100), [42000-224]
+2026-01-30 19:41:41.775647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat DECIMAL(10, 8),"; SQL statement:
+lat DECIMAL(10, 8), [42000-224]
+2026-01-30 19:41:41.776646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon DECIMAL(11, 8),"; SQL statement:
+lon DECIMAL(11, 8), [42000-224]
+2026-01-30 19:41:41.776646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, [42001-224]
+2026-01-30 19:41:41.776646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"; expected "UPDATE"; SQL statement:
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP [42001-224]
+2026-01-30 19:41:41.776646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:41:41.777646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO users ([*]"; expected "identifier"; SQL statement:
+INSERT INTO users ( [42001-224]
+2026-01-30 19:41:41.777646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username,"; expected "UPDATE"; SQL statement:
+username, [42001-224]
+2026-01-30 19:41:41.778648+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password,"; expected "PREPARE"; SQL statement:
+password, [42001-224]
+2026-01-30 19:41:41.778648+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type,"; expected "UPDATE"; SQL statement:
+user_type, [42001-224]
+2026-01-30 19:41:41.778648+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate, [42001-224]
+2026-01-30 19:41:41.778648+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender,"; expected "GRANT"; SQL statement:
+gender, [42001-224]
+2026-01-30 19:41:41.778648+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country, [42001-224]
+2026-01-30 19:41:41.778648+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality,"; expected "MERGE"; SQL statement:
+municipality, [42001-224]
+2026-01-30 19:41:41.778648+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address,"; expected "ALTER, ANALYZE"; SQL statement:
+address, [42001-224]
+2026-01-30 19:41:41.779647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job,"; SQL statement:
+job, [42000-224]
+2026-01-30 19:41:41.779647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat,"; SQL statement:
+lat, [42000-224]
+2026-01-30 19:41:41.779647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon"; SQL statement:
+lon [42000-224]
+2026-01-30 19:41:41.779647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:41:41.779647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "VALUES[*]"; expected "ROW (, (, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+VALUES [42001-224]
+2026-01-30 19:41:41.780645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:41:41.780645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin123!',"; SQL statement:
+'admin123!', [42000-224]
+2026-01-30 19:41:41.780645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:41:41.780645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'1990-01-15',"; SQL statement:
+'1990-01-15', [42000-224]
+2026-01-30 19:41:41.780645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'MALE',"; SQL statement:
+'MALE', [42000-224]
+2026-01-30 19:41:41.780645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Greece',"; SQL statement:
+'Greece', [42000-224]
+2026-01-30 19:41:41.780645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Athens',"; SQL statement:
+'Athens', [42000-224]
+2026-01-30 19:41:41.780645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'123 Main Street, Athens 10434',"; SQL statement:
+'123 Main Street, Athens 10434', [42000-224]
+2026-01-30 19:41:41.781645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'System Administrator',"; SQL statement:
+'System Administrator', [42000-224]
+2026-01-30 19:41:41.781645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]37.983810,"; SQL statement:
+37.983810, [42000-224]
+2026-01-30 19:41:41.782647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]23.727539"; SQL statement:
+23.727539 [42000-224]
+2026-01-30 19:41:41.782647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin')"; SQL statement:
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin') [42000-224]
+2026-01-30 19:41:41.783647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS users ([*]"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS users ( [42001-224]
+2026-01-30 19:41:41.783647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-224]
+2026-01-30 19:41:41.784647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username VARCHAR(50) UNIQUE NOT NULL,"; expected "UPDATE"; SQL statement:
+username VARCHAR(50) UNIQUE NOT NULL, [42001-224]
+2026-01-30 19:41:41.784647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password VARCHAR(255) NOT NULL,"; expected "PREPARE"; SQL statement:
+password VARCHAR(255) NOT NULL, [42001-224]
+2026-01-30 19:41:41.784647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')),"; expected "UPDATE"; SQL statement:
+user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')), [42001-224]
+2026-01-30 19:41:41.784647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate DATE,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate DATE, [42001-224]
+2026-01-30 19:41:41.784647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender VARCHAR(10),"; expected "GRANT"; SQL statement:
+gender VARCHAR(10), [42001-224]
+2026-01-30 19:41:41.784647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country VARCHAR(100),"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country VARCHAR(100), [42001-224]
+2026-01-30 19:41:41.785646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality VARCHAR(100),"; expected "MERGE"; SQL statement:
+municipality VARCHAR(100), [42001-224]
+2026-01-30 19:41:41.785646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address TEXT,"; expected "ALTER, ANALYZE"; SQL statement:
+address TEXT, [42001-224]
+2026-01-30 19:41:41.785646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job VARCHAR(100),"; SQL statement:
+job VARCHAR(100), [42000-224]
+2026-01-30 19:41:41.785646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat DECIMAL(10, 8),"; SQL statement:
+lat DECIMAL(10, 8), [42000-224]
+2026-01-30 19:41:41.785646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon DECIMAL(11, 8),"; SQL statement:
+lon DECIMAL(11, 8), [42000-224]
+2026-01-30 19:41:41.785646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, [42001-224]
+2026-01-30 19:41:41.785646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"; expected "UPDATE"; SQL statement:
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP [42001-224]
+2026-01-30 19:41:41.786646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:41:41.786646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO users ([*]"; expected "identifier"; SQL statement:
+INSERT INTO users ( [42001-224]
+2026-01-30 19:41:41.786646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username,"; expected "UPDATE"; SQL statement:
+username, [42001-224]
+2026-01-30 19:41:41.786646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password,"; expected "PREPARE"; SQL statement:
+password, [42001-224]
+2026-01-30 19:41:41.786646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type,"; expected "UPDATE"; SQL statement:
+user_type, [42001-224]
+2026-01-30 19:41:41.786646+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate, [42001-224]
+2026-01-30 19:41:41.787645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender,"; expected "GRANT"; SQL statement:
+gender, [42001-224]
+2026-01-30 19:41:41.787645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country, [42001-224]
+2026-01-30 19:41:41.787645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality,"; expected "MERGE"; SQL statement:
+municipality, [42001-224]
+2026-01-30 19:41:41.787645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address,"; expected "ALTER, ANALYZE"; SQL statement:
+address, [42001-224]
+2026-01-30 19:41:41.787645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job,"; SQL statement:
+job, [42000-224]
+2026-01-30 19:41:41.787645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat,"; SQL statement:
+lat, [42000-224]
+2026-01-30 19:41:41.787645+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon"; SQL statement:
+lon [42000-224]
+2026-01-30 19:41:41.788649+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:41:41.788649+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "VALUES[*]"; expected "ROW (, (, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+VALUES [42001-224]
+2026-01-30 19:41:41.788649+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:41:41.788649+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin123!',"; SQL statement:
+'admin123!', [42000-224]
+2026-01-30 19:41:41.788649+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:41:41.788649+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'1990-01-15',"; SQL statement:
+'1990-01-15', [42000-224]
+2026-01-30 19:41:41.788649+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'MALE',"; SQL statement:
+'MALE', [42000-224]
+2026-01-30 19:41:41.788649+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Greece',"; SQL statement:
+'Greece', [42000-224]
+2026-01-30 19:41:41.789647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Athens',"; SQL statement:
+'Athens', [42000-224]
+2026-01-30 19:41:41.789647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'123 Main Street, Athens 10434',"; SQL statement:
+'123 Main Street, Athens 10434', [42000-224]
+2026-01-30 19:41:41.789647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'System Administrator',"; SQL statement:
+'System Administrator', [42000-224]
+2026-01-30 19:41:41.789647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]37.983810,"; SQL statement:
+37.983810, [42000-224]
+2026-01-30 19:41:41.789647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]23.727539"; SQL statement:
+23.727539 [42000-224]
+2026-01-30 19:41:41.789647+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin')"; SQL statement:
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin') [42000-224]
+2026-01-30 19:42:33.932694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS users ([*]"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS users ( [42001-224]
+2026-01-30 19:42:33.957694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-224]
+2026-01-30 19:42:33.957694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username VARCHAR(50) UNIQUE NOT NULL,"; expected "UPDATE"; SQL statement:
+username VARCHAR(50) UNIQUE NOT NULL, [42001-224]
+2026-01-30 19:42:33.957694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password VARCHAR(255) NOT NULL,"; expected "PREPARE"; SQL statement:
+password VARCHAR(255) NOT NULL, [42001-224]
+2026-01-30 19:42:33.957694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')),"; expected "UPDATE"; SQL statement:
+user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')), [42001-224]
+2026-01-30 19:42:33.957694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate DATE,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate DATE, [42001-224]
+2026-01-30 19:42:33.958698+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender VARCHAR(10),"; expected "GRANT"; SQL statement:
+gender VARCHAR(10), [42001-224]
+2026-01-30 19:42:33.958698+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country VARCHAR(100),"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country VARCHAR(100), [42001-224]
+2026-01-30 19:42:33.958698+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality VARCHAR(100),"; expected "MERGE"; SQL statement:
+municipality VARCHAR(100), [42001-224]
+2026-01-30 19:42:33.958698+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address TEXT,"; expected "ALTER, ANALYZE"; SQL statement:
+address TEXT, [42001-224]
+2026-01-30 19:42:33.958698+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job VARCHAR(100),"; SQL statement:
+job VARCHAR(100), [42000-224]
+2026-01-30 19:42:33.958698+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat DECIMAL(10, 8),"; SQL statement:
+lat DECIMAL(10, 8), [42000-224]
+2026-01-30 19:42:33.959696+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon DECIMAL(11, 8),"; SQL statement:
+lon DECIMAL(11, 8), [42000-224]
+2026-01-30 19:42:33.959696+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, [42001-224]
+2026-01-30 19:42:33.959696+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"; expected "UPDATE"; SQL statement:
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP [42001-224]
+2026-01-30 19:42:33.959696+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:42:33.960695+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO users ([*]"; expected "identifier"; SQL statement:
+INSERT INTO users ( [42001-224]
+2026-01-30 19:42:33.960695+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username,"; expected "UPDATE"; SQL statement:
+username, [42001-224]
+2026-01-30 19:42:33.960695+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password,"; expected "PREPARE"; SQL statement:
+password, [42001-224]
+2026-01-30 19:42:33.961694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type,"; expected "UPDATE"; SQL statement:
+user_type, [42001-224]
+2026-01-30 19:42:33.961694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate, [42001-224]
+2026-01-30 19:42:33.961694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender,"; expected "GRANT"; SQL statement:
+gender, [42001-224]
+2026-01-30 19:42:33.961694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country, [42001-224]
+2026-01-30 19:42:33.961694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality,"; expected "MERGE"; SQL statement:
+municipality, [42001-224]
+2026-01-30 19:42:33.961694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address,"; expected "ALTER, ANALYZE"; SQL statement:
+address, [42001-224]
+2026-01-30 19:42:33.962693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job,"; SQL statement:
+job, [42000-224]
+2026-01-30 19:42:33.962693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat,"; SQL statement:
+lat, [42000-224]
+2026-01-30 19:42:33.962693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon"; SQL statement:
+lon [42000-224]
+2026-01-30 19:42:33.962693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:42:33.962693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "VALUES[*]"; expected "ROW (, (, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+VALUES [42001-224]
+2026-01-30 19:42:33.962693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:42:33.962693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin123!',"; SQL statement:
+'admin123!', [42000-224]
+2026-01-30 19:42:33.963693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:42:33.963693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'1990-01-15',"; SQL statement:
+'1990-01-15', [42000-224]
+2026-01-30 19:42:33.963693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'MALE',"; SQL statement:
+'MALE', [42000-224]
+2026-01-30 19:42:33.963693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Greece',"; SQL statement:
+'Greece', [42000-224]
+2026-01-30 19:42:33.963693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Athens',"; SQL statement:
+'Athens', [42000-224]
+2026-01-30 19:42:33.963693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'123 Main Street, Athens 10434',"; SQL statement:
+'123 Main Street, Athens 10434', [42000-224]
+2026-01-30 19:42:33.963693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'System Administrator',"; SQL statement:
+'System Administrator', [42000-224]
+2026-01-30 19:42:33.964697+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]37.983810,"; SQL statement:
+37.983810, [42000-224]
+2026-01-30 19:42:33.964697+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]23.727539"; SQL statement:
+23.727539 [42000-224]
+2026-01-30 19:42:33.964697+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin')"; SQL statement:
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin') [42000-224]
+2026-01-30 19:42:33.966695+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS users ([*]"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS users ( [42001-224]
+2026-01-30 19:42:33.966695+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-224]
+2026-01-30 19:42:33.966695+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username VARCHAR(50) UNIQUE NOT NULL,"; expected "UPDATE"; SQL statement:
+username VARCHAR(50) UNIQUE NOT NULL, [42001-224]
+2026-01-30 19:42:33.967694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password VARCHAR(255) NOT NULL,"; expected "PREPARE"; SQL statement:
+password VARCHAR(255) NOT NULL, [42001-224]
+2026-01-30 19:42:33.967694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')),"; expected "UPDATE"; SQL statement:
+user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')), [42001-224]
+2026-01-30 19:42:33.967694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate DATE,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate DATE, [42001-224]
+2026-01-30 19:42:33.967694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender VARCHAR(10),"; expected "GRANT"; SQL statement:
+gender VARCHAR(10), [42001-224]
+2026-01-30 19:42:33.967694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country VARCHAR(100),"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country VARCHAR(100), [42001-224]
+2026-01-30 19:42:33.967694+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality VARCHAR(100),"; expected "MERGE"; SQL statement:
+municipality VARCHAR(100), [42001-224]
+2026-01-30 19:42:33.968693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address TEXT,"; expected "ALTER, ANALYZE"; SQL statement:
+address TEXT, [42001-224]
+2026-01-30 19:42:33.968693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job VARCHAR(100),"; SQL statement:
+job VARCHAR(100), [42000-224]
+2026-01-30 19:42:33.968693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat DECIMAL(10, 8),"; SQL statement:
+lat DECIMAL(10, 8), [42000-224]
+2026-01-30 19:42:33.968693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon DECIMAL(11, 8),"; SQL statement:
+lon DECIMAL(11, 8), [42000-224]
+2026-01-30 19:42:33.968693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, [42001-224]
+2026-01-30 19:42:33.968693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"; expected "UPDATE"; SQL statement:
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP [42001-224]
+2026-01-30 19:42:33.968693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:42:33.969695+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO users ([*]"; expected "identifier"; SQL statement:
+INSERT INTO users ( [42001-224]
+2026-01-30 19:42:33.969695+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username,"; expected "UPDATE"; SQL statement:
+username, [42001-224]
+2026-01-30 19:42:33.969695+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password,"; expected "PREPARE"; SQL statement:
+password, [42001-224]
+2026-01-30 19:42:33.969695+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type,"; expected "UPDATE"; SQL statement:
+user_type, [42001-224]
+2026-01-30 19:42:33.969695+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate, [42001-224]
+2026-01-30 19:42:33.969695+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender,"; expected "GRANT"; SQL statement:
+gender, [42001-224]
+2026-01-30 19:42:33.969695+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country, [42001-224]
+2026-01-30 19:42:33.970693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality,"; expected "MERGE"; SQL statement:
+municipality, [42001-224]
+2026-01-30 19:42:33.970693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address,"; expected "ALTER, ANALYZE"; SQL statement:
+address, [42001-224]
+2026-01-30 19:42:33.970693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job,"; SQL statement:
+job, [42000-224]
+2026-01-30 19:42:33.970693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat,"; SQL statement:
+lat, [42000-224]
+2026-01-30 19:42:33.970693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon"; SQL statement:
+lon [42000-224]
+2026-01-30 19:42:33.970693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:42:33.970693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "VALUES[*]"; expected "ROW (, (, INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+VALUES [42001-224]
+2026-01-30 19:42:33.970693+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:42:33.971697+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin123!',"; SQL statement:
+'admin123!', [42000-224]
+2026-01-30 19:42:33.971697+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:42:33.971697+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'1990-01-15',"; SQL statement:
+'1990-01-15', [42000-224]
+2026-01-30 19:42:33.971697+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'MALE',"; SQL statement:
+'MALE', [42000-224]
+2026-01-30 19:42:33.971697+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Greece',"; SQL statement:
+'Greece', [42000-224]
+2026-01-30 19:42:33.971697+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Athens',"; SQL statement:
+'Athens', [42000-224]
+2026-01-30 19:42:33.971697+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'123 Main Street, Athens 10434',"; SQL statement:
+'123 Main Street, Athens 10434', [42000-224]
+2026-01-30 19:42:33.971697+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'System Administrator',"; SQL statement:
+'System Administrator', [42000-224]
+2026-01-30 19:42:33.972699+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]37.983810,"; SQL statement:
+37.983810, [42000-224]
+2026-01-30 19:42:33.972699+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]23.727539"; SQL statement:
+23.727539 [42000-224]
+2026-01-30 19:42:33.972699+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin')"; SQL statement:
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin') [42000-224]
+2026-01-30 19:42:49.439240+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]USERNAME"; expected "UPDATE"; SQL statement:
+USERNAME [42001-224]
+2026-01-30 19:43:25.021072+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS users ( id BIGINT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(50) UNIQUE NOT NULL, password VARCHAR(255) NOT NULL, user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')), birthdate DATE, gender VARCHAR(10), country VARCHAR(100), municipality VARCHAR(100), address TEXT, job VARCHAR(100), lat DECIMAL(10, 8), lon DECIMAL(11, 8), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ) [*]INSERT INTO users ( username, password, user_type, birthdate, gender, country, municipality, address, job, lat, lon ) VALUES ( 'admin', 'admin123!', 'admin', '1990-01-15', 'MALE', 'Greece', 'Athens', '123 Main Street, Athens 10434', 'System Administrator', 37.983810, 23.727539 )"; SQL statement:
+CREATE TABLE IF NOT EXISTS users ( id BIGINT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(50) UNIQUE NOT NULL, password VARCHAR(255) NOT NULL, user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')), birthdate DATE, gender VARCHAR(10), country VARCHAR(100), municipality VARCHAR(100), address TEXT, job VARCHAR(100), lat DECIMAL(10, 8), lon DECIMAL(11, 8), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ) INSERT INTO users ( username, password, user_type, birthdate, gender, country, municipality, address, job, lat, lon ) VALUES ( 'admin', 'admin123!', 'admin', '1990-01-15', 'MALE', 'Greece', 'Athens', '123 Main Street, Athens 10434', 'System Administrator', 37.983810, 23.727539 ) [42000-224]
+2026-01-30 19:43:25.045588+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS users ( id BIGINT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(50) UNIQUE NOT NULL, password VARCHAR(255) NOT NULL, user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')), birthdate DATE, gender VARCHAR(10), country VARCHAR(100), municipality VARCHAR(100), address TEXT, job VARCHAR(100), lat DECIMAL(10, 8), lon DECIMAL(11, 8), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ) [*]INSERT INTO users ( username, password, user_type, birthdate, gender, country, municipality, address, job, lat, lon ) VALUES ( 'admin', 'admin123!', 'admin', '1990-01-15', 'MALE', 'Greece', 'Athens', '123 Main Street, Athens 10434', 'System Administrator', 37.983810, 23.727539 )"; SQL statement:
+CREATE TABLE IF NOT EXISTS users ( id BIGINT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(50) UNIQUE NOT NULL, password VARCHAR(255) NOT NULL, user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('ADMIN', 'USER', 'VOLUNTEER')), birthdate DATE, gender VARCHAR(10), country VARCHAR(100), municipality VARCHAR(100), address TEXT, job VARCHAR(100), lat DECIMAL(10, 8), lon DECIMAL(11, 8), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ) INSERT INTO users ( username, password, user_type, birthdate, gender, country, municipality, address, job, lat, lon ) VALUES ( 'admin', 'admin123!', 'admin', '1990-01-15', 'MALE', 'Greece', 'Athens', '123 Main Street, Athens 10434', 'System Administrator', 37.983810, 23.727539 ) [42000-224]
+2026-01-30 19:46:02.464213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS users ([*]"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS users ( [42001-224]
+2026-01-30 19:46:02.491211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-224]
+2026-01-30 19:46:02.491211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username VARCHAR(50) UNIQUE NOT NULL,"; expected "UPDATE"; SQL statement:
+username VARCHAR(50) UNIQUE NOT NULL, [42001-224]
+2026-01-30 19:46:02.491211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password VARCHAR(255) NOT NULL,"; expected "PREPARE"; SQL statement:
+password VARCHAR(255) NOT NULL, [42001-224]
+2026-01-30 19:46:02.492211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('admin', 'user', 'volunteer')),"; expected "UPDATE"; SQL statement:
+user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('admin', 'user', 'volunteer')), [42001-224]
+2026-01-30 19:46:02.492211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate DATE,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate DATE, [42001-224]
+2026-01-30 19:46:02.492211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender VARCHAR(10),"; expected "GRANT"; SQL statement:
+gender VARCHAR(10), [42001-224]
+2026-01-30 19:46:02.492211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country VARCHAR(100),"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country VARCHAR(100), [42001-224]
+2026-01-30 19:46:02.493214+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality VARCHAR(100),"; expected "MERGE"; SQL statement:
+municipality VARCHAR(100), [42001-224]
+2026-01-30 19:46:02.493214+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address TEXT,"; expected "ALTER, ANALYZE"; SQL statement:
+address TEXT, [42001-224]
+2026-01-30 19:46:02.493214+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job VARCHAR(100),"; SQL statement:
+job VARCHAR(100), [42000-224]
+2026-01-30 19:46:02.493214+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat DECIMAL(10, 8),"; SQL statement:
+lat DECIMAL(10, 8), [42000-224]
+2026-01-30 19:46:02.493214+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon DECIMAL(11, 8),"; SQL statement:
+lon DECIMAL(11, 8), [42000-224]
+2026-01-30 19:46:02.494210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, [42001-224]
+2026-01-30 19:46:02.494210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"; expected "UPDATE"; SQL statement:
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP [42001-224]
+2026-01-30 19:46:02.494210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:46:02.495211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO users ([*]"; expected "identifier"; SQL statement:
+INSERT INTO users ( [42001-224]
+2026-01-30 19:46:02.495211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username,"; expected "UPDATE"; SQL statement:
+username, [42001-224]
+2026-01-30 19:46:02.496212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password,"; expected "PREPARE"; SQL statement:
+password, [42001-224]
+2026-01-30 19:46:02.496212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type,"; expected "UPDATE"; SQL statement:
+user_type, [42001-224]
+2026-01-30 19:46:02.496212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate, [42001-224]
+2026-01-30 19:46:02.496212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender,"; expected "GRANT"; SQL statement:
+gender, [42001-224]
+2026-01-30 19:46:02.496212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country, [42001-224]
+2026-01-30 19:46:02.496212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality,"; expected "MERGE"; SQL statement:
+municipality, [42001-224]
+2026-01-30 19:46:02.497210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address,"; expected "ALTER, ANALYZE"; SQL statement:
+address, [42001-224]
+2026-01-30 19:46:02.497210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job,"; SQL statement:
+job, [42000-224]
+2026-01-30 19:46:02.497210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat,"; SQL statement:
+lat, [42000-224]
+2026-01-30 19:46:02.497210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon"; SQL statement:
+lon [42000-224]
+2026-01-30 19:46:02.497210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:46:02.513209+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:46:02.514210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin123!',"; SQL statement:
+'admin123!', [42000-224]
+2026-01-30 19:46:02.514210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:46:02.514210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'1990-01-15',"; SQL statement:
+'1990-01-15', [42000-224]
+2026-01-30 19:46:02.514210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'MALE',"; SQL statement:
+'MALE', [42000-224]
+2026-01-30 19:46:02.514210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Greece',"; SQL statement:
+'Greece', [42000-224]
+2026-01-30 19:46:02.514210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Athens',"; SQL statement:
+'Athens', [42000-224]
+2026-01-30 19:46:02.514210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'123 Main Street, Athens 10434',"; SQL statement:
+'123 Main Street, Athens 10434', [42000-224]
+2026-01-30 19:46:02.515210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'System Administrator',"; SQL statement:
+'System Administrator', [42000-224]
+2026-01-30 19:46:02.516209+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]37.983810,"; SQL statement:
+37.983810, [42000-224]
+2026-01-30 19:46:02.516209+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]23.727539"; SQL statement:
+23.727539 [42000-224]
+2026-01-30 19:46:02.516209+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin')"; SQL statement:
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin') [42000-224]
+2026-01-30 19:46:02.518210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS users ([*]"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS users ( [42001-224]
+2026-01-30 19:46:02.518210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]id BIGINT AUTO_INCREMENT PRIMARY KEY,"; expected "INSERT"; SQL statement:
+id BIGINT AUTO_INCREMENT PRIMARY KEY, [42001-224]
+2026-01-30 19:46:02.519213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username VARCHAR(50) UNIQUE NOT NULL,"; expected "UPDATE"; SQL statement:
+username VARCHAR(50) UNIQUE NOT NULL, [42001-224]
+2026-01-30 19:46:02.519213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password VARCHAR(255) NOT NULL,"; expected "PREPARE"; SQL statement:
+password VARCHAR(255) NOT NULL, [42001-224]
+2026-01-30 19:46:02.519213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('admin', 'user', 'volunteer')),"; expected "UPDATE"; SQL statement:
+user_type VARCHAR(20) NOT NULL DEFAULT 'USER' CHECK (user_type IN ('admin', 'user', 'volunteer')), [42001-224]
+2026-01-30 19:46:02.519213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate DATE,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate DATE, [42001-224]
+2026-01-30 19:46:02.519213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender VARCHAR(10),"; expected "GRANT"; SQL statement:
+gender VARCHAR(10), [42001-224]
+2026-01-30 19:46:02.519213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country VARCHAR(100),"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country VARCHAR(100), [42001-224]
+2026-01-30 19:46:02.519213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality VARCHAR(100),"; expected "MERGE"; SQL statement:
+municipality VARCHAR(100), [42001-224]
+2026-01-30 19:46:02.520213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address TEXT,"; expected "ALTER, ANALYZE"; SQL statement:
+address TEXT, [42001-224]
+2026-01-30 19:46:02.520213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job VARCHAR(100),"; SQL statement:
+job VARCHAR(100), [42000-224]
+2026-01-30 19:46:02.520213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat DECIMAL(10, 8),"; SQL statement:
+lat DECIMAL(10, 8), [42000-224]
+2026-01-30 19:46:02.520213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon DECIMAL(11, 8),"; SQL statement:
+lon DECIMAL(11, 8), [42000-224]
+2026-01-30 19:46:02.520213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, [42001-224]
+2026-01-30 19:46:02.520213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"; expected "UPDATE"; SQL statement:
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP [42001-224]
+2026-01-30 19:46:02.521212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:46:02.521212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO users ([*]"; expected "identifier"; SQL statement:
+INSERT INTO users ( [42001-224]
+2026-01-30 19:46:02.521212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]username,"; expected "UPDATE"; SQL statement:
+username, [42001-224]
+2026-01-30 19:46:02.521212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]password,"; expected "PREPARE"; SQL statement:
+password, [42001-224]
+2026-01-30 19:46:02.521212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]user_type,"; expected "UPDATE"; SQL statement:
+user_type, [42001-224]
+2026-01-30 19:46:02.521212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]birthdate,"; expected "BACKUP, BEGIN"; SQL statement:
+birthdate, [42001-224]
+2026-01-30 19:46:02.521212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]gender,"; expected "GRANT"; SQL statement:
+gender, [42001-224]
+2026-01-30 19:46:02.522213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]country,"; expected "COMMIT, CREATE, CALL, CHECKPOINT, COMMENT"; SQL statement:
+country, [42001-224]
+2026-01-30 19:46:02.522213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]municipality,"; expected "MERGE"; SQL statement:
+municipality, [42001-224]
+2026-01-30 19:46:02.522213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]address,"; expected "ALTER, ANALYZE"; SQL statement:
+address, [42001-224]
+2026-01-30 19:46:02.522213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]job,"; SQL statement:
+job, [42000-224]
+2026-01-30 19:46:02.522213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lat,"; SQL statement:
+lat, [42000-224]
+2026-01-30 19:46:02.522213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]lon"; SQL statement:
+lon [42000-224]
+2026-01-30 19:46:02.522213+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*])"; SQL statement:
+) [42000-224]
+2026-01-30 19:46:02.523212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:46:02.523212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin123!',"; SQL statement:
+'admin123!', [42000-224]
+2026-01-30 19:46:02.523212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'admin',"; SQL statement:
+'admin', [42000-224]
+2026-01-30 19:46:02.523212+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'1990-01-15',"; SQL statement:
+'1990-01-15', [42000-224]
+2026-01-30 19:46:02.524211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'MALE',"; SQL statement:
+'MALE', [42000-224]
+2026-01-30 19:46:02.524211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Greece',"; SQL statement:
+'Greece', [42000-224]
+2026-01-30 19:46:02.524211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'Athens',"; SQL statement:
+'Athens', [42000-224]
+2026-01-30 19:46:02.524211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'123 Main Street, Athens 10434',"; SQL statement:
+'123 Main Street, Athens 10434', [42000-224]
+2026-01-30 19:46:02.524211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]'System Administrator',"; SQL statement:
+'System Administrator', [42000-224]
+2026-01-30 19:46:02.524211+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]37.983810,"; SQL statement:
+37.983810, [42000-224]
+2026-01-30 19:46:02.525210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]23.727539"; SQL statement:
+23.727539 [42000-224]
+2026-01-30 19:46:02.525210+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin')"; SQL statement:
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE username = 'admin') [42000-224]
+2026-01-30 19:47:09.768588+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM USERS USERNAME [*]ID"; SQL statement:
+SELECT * FROM USERS USERNAME ID [42000-224]
+2026-01-30 19:48:24.979473+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TEST_USERS" already exists; SQL statement:
+CREATE TABLE test_users ( id INT PRIMARY KEY, name VARCHAR(50) ) [42101-224]
+2026-01-30 20:36:51.327535+02:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]USERNAME"; expected "UPDATE"; SQL statement:
+USERNAME [42001-224]
+2026-01-31 19:18:56.906671+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-224]
