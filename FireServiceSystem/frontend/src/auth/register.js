@@ -8,9 +8,13 @@ function Register() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
+    firstName: "",
+    lastName: "",
+    telephone: "",
     password: "",
     confirmPassword: "",
     userType: "USER", // CHANGED from "type" to "userType"
+    volunteerRole: "",
     birthdate: "",
     gender: "MALE",
     country: "",
@@ -32,6 +36,18 @@ function Register() {
       newErrors.username = "Username must be at least 3 characters";
     }
 
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = "First name is required";
+    }
+
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = "Last name is required";
+    }
+
+    if (!formData.telephone.trim()) {
+      newErrors.telephone = "Telephone is required";
+    }
+
     if (!formData.password) {
       newErrors.password = "Password is required";
     } else if (formData.password.length < 6) {
@@ -50,6 +66,10 @@ function Register() {
 
     if (!formData.birthdate) {
       newErrors.birthdate = "Birthdate is required";
+    }
+
+    if (formData.userType === "VOLUNTEER" && !formData.volunteerRole) {
+      newErrors.volunteerRole = "Volunteer role is required";
     }
 
     if (!formData.country.trim()) {
@@ -79,8 +99,12 @@ function Register() {
         },
         body: JSON.stringify({
           username: formData.username,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          telephone: formData.telephone,
           password: formData.password,
           userType: formData.userType, // CHANGED: type → userType
+          volunteerRole: formData.userType === "VOLUNTEER" ? formData.volunteerRole : null,
           birthdate: formData.birthdate,
           gender: formData.gender,
           country: formData.country,
@@ -143,6 +167,60 @@ function Register() {
               {errors.username && <span className="error-text">{errors.username}</span>}
             </div>
 
+            <div className="input-group">
+              <label>First Name *</label>
+              <div className="input-field">
+                <input
+                  type="text"
+                  value={formData.firstName}
+                  onChange={(e) => {
+                    setFormData({...formData, firstName: e.target.value});
+                    if (errors.firstName) setErrors({...errors, firstName: ""});
+                  }}
+                  placeholder="Enter your first name"
+                  className={errors.firstName ? "error" : ""}
+                  disabled={isLoading}
+                />
+              </div>
+              {errors.firstName && <span className="error-text">{errors.firstName}</span>}
+            </div>
+
+            <div className="input-group">
+              <label>Last Name *</label>
+              <div className="input-field">
+                <input
+                  type="text"
+                  value={formData.lastName}
+                  onChange={(e) => {
+                    setFormData({...formData, lastName: e.target.value});
+                    if (errors.lastName) setErrors({...errors, lastName: ""});
+                  }}
+                  placeholder="Enter your last name"
+                  className={errors.lastName ? "error" : ""}
+                  disabled={isLoading}
+                />
+              </div>
+              {errors.lastName && <span className="error-text">{errors.lastName}</span>}
+            </div>
+
+            <div className="input-group">
+              <label>Telephone *</label>
+              <div className="input-field">
+                <input
+                  type="text"
+                  value={formData.telephone}
+                  onChange={(e) => {
+                    setFormData({...formData, telephone: e.target.value});
+                    if (errors.telephone) setErrors({...errors, telephone: ""});
+                  }}
+                  placeholder="Enter your telephone"
+                  className={errors.telephone ? "error" : ""}
+                  disabled={isLoading}
+                />
+              </div>
+              {errors.telephone && <span className="error-text">{errors.telephone}</span>}
+            </div>
+
             {/* Password */}
             <div className="input-group">
               <label>Password *</label>
@@ -203,7 +281,7 @@ function Register() {
               <div className="input-field">
                 <select
                   value={formData.userType} // CHANGED: type → userType
-                  onChange={(e) => setFormData({...formData, userType: e.target.value})}
+                  onChange={(e) => setFormData({...formData, userType: e.target.value, volunteerRole: ""})}
                   className="select-input"
                   disabled={isLoading}
                 >
@@ -212,6 +290,28 @@ function Register() {
                 </select>
               </div>
             </div>
+
+            {formData.userType === "VOLUNTEER" && (
+              <div className="input-group">
+                <label>Volunteer Role *</label>
+                <div className="input-field">
+                  <select
+                    value={formData.volunteerRole}
+                    onChange={(e) => {
+                      setFormData({...formData, volunteerRole: e.target.value});
+                      if (errors.volunteerRole) setErrors({...errors, volunteerRole: ""});
+                    }}
+                    className={`select-input ${errors.volunteerRole ? "error" : ""}`}
+                    disabled={isLoading}
+                  >
+                    <option value="">Select role</option>
+                    <option value="FIREFIGHTER">Firefighter</option>
+                    <option value="DRIVER">Driver</option>
+                  </select>
+                </div>
+                {errors.volunteerRole && <span className="error-text">{errors.volunteerRole}</span>}
+              </div>
+            )}
 
             {/* Birthdate */}
             <div className="input-group">

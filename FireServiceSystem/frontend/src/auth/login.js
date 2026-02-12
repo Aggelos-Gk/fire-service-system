@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
+import { fetchJson } from "../utils/api";
+import { normalizeRole } from "../utils/session";
 
-function Login({ setUsername }) {
+function Login() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -35,11 +37,10 @@ function Login({ setUsername }) {
     setIsLoading(true);
 
     try {
-      // Call your Spring backend login endpoint
-      const response = await fetch('http://localhost:8080/api/auth/login', {
-        method: 'POST',
+      const data = await fetchJson("/api/auth/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           username: formData.username,
@@ -47,16 +48,27 @@ function Login({ setUsername }) {
         })
       });
 
-      const data = await response.json();
-
       if (data.status === "SUCCESS") {
-        // Save token and user info
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('username', data.username);
-        localStorage.setItem('role', data.role);
+        const userId = Number(data.userId);
+        const role = normalizeRole(data.role);
 
-        setUsername(data.username);
-        navigate("/dashboard");
+        localStorage.setItem("token", data.token || "session-token");
+        localStorage.setItem("username", data.username || "");
+        localStorage.setItem("displayName", data.username || "");
+        localStorage.setItem("role", role || "GUEST");
+        if (Number.isFinite(userId)) {
+          localStorage.setItem("userId", String(userId));
+          try {
+            const user = await fetchJson(`/api/users/${userId}`);
+            const displayName = user.username || data.username || "";
+            localStorage.setItem("displayName", displayName);
+            localStorage.setItem("username", user.username || data.username || "");
+          } catch (userError) {
+            console.warn("Could not load user profile after login:", userError);
+          }
+        }
+
+        navigate("/dashboard/home");
       } else {
         setErrors({ general: data.message || "Login failed" });
       }

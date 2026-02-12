@@ -1,0 +1,79 @@
+.free-map {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background: #0d2137;
+  cursor: grab;
+  user-select: none;
+}
+
+.free-map.dragging {
+  cursor: grabbing;
+}
+
+.free-map-tile {
+  position: absolute;
+  width: 256px;
+  height: 256px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.free-map-pin {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.25);
+}
+
+.free-map-zoom {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 2;
+}
+
+.free-map-zoom-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(10, 26, 45, 0.8);
+  color: #e2e8f0;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.free-map-zoom-btn:hover {
+  background: rgba(25, 48, 74, 0.95);
+}
+
+.free-map-attribution {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  font-size: 0.7rem;
+  color: #dbeafe;
+  text-decoration: none;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.free-map-empty {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}

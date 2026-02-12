@@ -4,6 +4,9 @@ import java.time.LocalDate;
 
 public class RegisterRequest {
     private String username;
+    private String firstName;
+    private String lastName;
+    private String telephone;
     private String password;
     private String userType; // ADMIN, USER, VOLUNTEER
     private LocalDate birthdate;
@@ -12,11 +15,21 @@ public class RegisterRequest {
     private String municipality;
     private String address;
     private String job;
+    private String volunteerRole;
     private Double lat;
     private Double lon;
 
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
+
+    public String getFirstName() { return firstName; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+
+    public String getLastName() { return lastName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
+
+    public String getTelephone() { return telephone; }
+    public void setTelephone(String telephone) { this.telephone = telephone; }
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
@@ -41,6 +54,9 @@ public class RegisterRequest {
 
     public String getJob() { return job; }
     public void setJob(String job) { this.job = job; }
+
+    public String getVolunteerRole() { return volunteerRole; }
+    public void setVolunteerRole(String volunteerRole) { this.volunteerRole = volunteerRole; }
 
     public Double getLat() { return lat; }
     public void setLat(Double lat) { this.lat = lat; }
