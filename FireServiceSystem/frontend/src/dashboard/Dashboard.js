@@ -47,6 +47,10 @@ const ICONS = {
     "M4 19h16",
     "M8 5v14"
   ],
+  panelToggle: [
+    "M4.5 6a1.5 1.5 0 0 1 1.5-1.5h12A1.5 1.5 0 0 1 19.5 6v12a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4.5 18Z",
+    "M9.5 4.5v15"
+  ],
   bell: [
     "M9.5 18h5",
     "M18 15H6l1.2-1.8c.5-.8.8-1.7.8-2.7V9a4 4 0 1 1 8 0v1.5c0 1 .3 1.9.8 2.7Z"
@@ -94,6 +98,7 @@ function Dashboard() {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifications, setNotifications] = useState([]);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   const loggedIn = isLoggedIn(session);
   const normalizedRole = normalizeRole(session.role) || "GUEST";
@@ -235,6 +240,11 @@ function Dashboard() {
     navigate("/");
   };
 
+  const toggleSidebar = () => {
+    setShowUserMenu(false);
+    setIsSidebarCollapsed((prev) => !prev);
+  };
+
   const roleLabel = (() => {
     if (normalizedRole === "ADMIN") return "Administrator";
     if (normalizedRole === "VOLUNTEER") return "Volunteer";
@@ -258,7 +268,7 @@ function Dashboard() {
 
   return (
     <div className="dashboard-container">
-      <div className="dashboard-shell">
+      <div className={`dashboard-shell ${isSidebarCollapsed ? "sidebar-collapsed" : ""}`.trim()}>
         <aside className="dashboard-sidebar">
           <div className="sidebar-brand">
             <button className="brand-button" onClick={() => handleMenuClick("home")}>
@@ -313,7 +323,11 @@ function Dashboard() {
 
           {loggedIn ? (
             <div className="sidebar-user-card" ref={userMenuRef}>
-              <button className="sidebar-user-main" onClick={() => navigate("/dashboard/profile")}>
+              <button
+                className="sidebar-user-main"
+                onClick={() => setShowUserMenu((prev) => !prev)}
+                aria-label="Open user menu"
+              >
                 <span className="sidebar-avatar">{initials}</span>
                 <span className="sidebar-user-meta">
                   <strong>{displayName}</strong>
@@ -367,9 +381,15 @@ function Dashboard() {
         <section className="dashboard-main">
           <header className="dashboard-topbar">
             <div className="topbar-title">
-              <span className="topbar-icon-wrap">
-                <Icon name="panel" />
-              </span>
+              <button
+                type="button"
+                className={`sidebar-toggle-button ${isSidebarCollapsed ? "collapsed" : ""}`.trim()}
+                onClick={toggleSidebar}
+                aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+                aria-expanded={!isSidebarCollapsed}
+              >
+                <Icon name="panelToggle" />
+              </button>
               <span className="topbar-divider" />
               <h1>{pageTitle}</h1>
             </div>
