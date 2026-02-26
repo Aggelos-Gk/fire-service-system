@@ -87,10 +87,6 @@ function Users() {
 
   return (
     <div className="users-container">
-      <div className="content-header">
-        <h2>Users</h2>
-      </div>
-
       {error && <div className="inline-error">{error}</div>}
       {loading && <div className="inline-loading">Loading users...</div>}
 

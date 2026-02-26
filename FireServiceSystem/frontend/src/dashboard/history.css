@@ -54,6 +54,11 @@
   transform: translateY(-2px);
 }
 
+.history-stat-card .stat-icon .ui-icon {
+  width: 18px;
+  height: 18px;
+}
+
 .history-filters {
   display: flex;
   gap: 0.75rem;
@@ -147,8 +152,16 @@
 }
 
 .incident-location-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   color: #64748b;
   font-size: 0.85rem;
+}
+
+.incident-location-cell .ui-icon {
+  width: 14px;
+  height: 14px;
 }
 
 .history-date {
@@ -183,6 +196,11 @@
   color: #cbd5e1;
 }
 
+.responders-count .ui-icon {
+  width: 15px;
+  height: 15px;
+}
+
 .outcome-badge {
   display: inline-block;
   padding: 0.35rem 0.85rem;
@@ -204,6 +222,11 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.view-details-btn .ui-icon {
+  width: 14px;
+  height: 14px;
 }
 
 .view-details-btn:hover {

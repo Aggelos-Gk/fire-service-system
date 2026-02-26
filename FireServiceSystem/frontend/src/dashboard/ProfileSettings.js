@@ -150,10 +150,6 @@ function ProfileSettings() {
 
   return (
     <div className="profile-container">
-      <div className="content-header">
-        <h2>Profile Settings</h2>
-      </div>
-
       {loading && <div className="inline-loading">Loading profile...</div>}
       {error && <div className="inline-error">{error}</div>}
       {success && <div className="inline-success">{success}</div>}

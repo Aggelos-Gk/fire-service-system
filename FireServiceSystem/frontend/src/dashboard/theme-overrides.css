@@ -238,9 +238,9 @@
 .dashboard-container .incident-modal,
 .dashboard-container .notifications-dropdown,
 .dashboard-container .user-dropdown {
-  background: var(--mono-bg-2) !important;
+  background: var(--mono-bg-3) !important;
   background-image: none !important;
-  border: none !important;
+  border: 1px solid #2b2b2b !important;
   box-shadow: none !important;
 }
 
@@ -287,16 +287,37 @@
 .dashboard-container .notification-item,
 .dashboard-container .request-item,
 .dashboard-container .home-list-row {
-  background: #161616 !important;
-  border: none !important;
+  background: #151515 !important;
+  border: 1px solid #2b2b2b !important;
 }
 
 .dashboard-container .notification-item.unread,
 .dashboard-container .request-card.highlight,
 .dashboard-container .incident-card.highlight,
 .dashboard-container .message-card.highlight {
-  border: none !important;
+  border: 1px solid #3a3a3a !important;
   box-shadow: none !important;
+}
+
+.dashboard-container .content-grid,
+.dashboard-container .stats-container,
+.dashboard-container .home-summary-grid,
+.dashboard-container .home-lists-grid,
+.dashboard-container .messages-stats,
+.dashboard-container .participants-stats,
+.dashboard-container .history-stats {
+  gap: 24px !important;
+}
+
+.dashboard-container .incidents-list,
+.dashboard-container .messages-list,
+.dashboard-container .participants-grid,
+.dashboard-container .users-list {
+  gap: 22px !important;
+}
+
+.dashboard-container .request-board {
+  gap: 14px !important;
 }
 
 .dashboard-container .incident-modal-backdrop {
@@ -328,11 +349,11 @@
 }
 
 .dashboard-container .chart-line.line-main {
-  stroke: #bbbbbb !important;
+  stroke: #8fc2ff !important;
 }
 
 .dashboard-container .chart-line.line-secondary {
-  stroke: #8c8c8c !important;
+  stroke: #2f86ff !important;
 }
 
 .dashboard-container .messages-list,

@@ -5,6 +5,7 @@ import "./theme-overrides.css";
 import { fetchJson } from "../utils/api";
 import { getStoredSession, normalizeRole } from "../utils/session";
 import { formatRelativeTime } from "../utils/time";
+import SectionIcon from "./sectionIcon";
 
 function Participations() {
   const [searchParams] = useSearchParams();
@@ -126,10 +127,6 @@ function Participations() {
 
   return (
     <div className="participations-container">
-      <div className="content-header">
-        <h2>Participants</h2>
-      </div>
-
       {error && <div className="inline-error">{error}</div>}
       {loading && <div className="inline-loading">Loading participants...</div>}
 
@@ -220,28 +217,28 @@ function Participations() {
 
       <div className="participants-stats">
         <div className="participant-stat-card">
-          <div className="stat-icon">👥</div>
+          <div className="stat-icon"><SectionIcon name="users" /></div>
           <div className="stat-info">
             <div className="stat-value">{stats.total}</div>
             <div className="stat-label">Total Participants</div>
           </div>
         </div>
         <div className="participant-stat-card">
-          <div className="stat-icon">🔥</div>
+          <div className="stat-icon"><SectionIcon name="incidents" /></div>
           <div className="stat-info">
             <div className="stat-value">{stats.incidents}</div>
             <div className="stat-label">Incidents Covered</div>
           </div>
         </div>
         <div className="participant-stat-card">
-          <div className="stat-icon">🙋</div>
+          <div className="stat-icon"><SectionIcon name="participations" /></div>
           <div className="stat-info">
             <div className="stat-value">{stats.volunteers}</div>
             <div className="stat-label">Volunteers</div>
           </div>
         </div>
         <div className="participant-stat-card">
-          <div className="stat-icon">🏷️</div>
+          <div className="stat-icon"><SectionIcon name="tag" /></div>
           <div className="stat-info">
             <div className="stat-value">{stats.roles}</div>
             <div className="stat-label">Roles</div>
@@ -276,7 +273,7 @@ function Participations() {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-participants-input"
           />
-          <span className="search-icon">🔍</span>
+          <span className="search-icon"><SectionIcon name="search" /></span>
         </div>
       </div>
 
@@ -296,21 +293,21 @@ function Participations() {
 
             <div className="participant-details">
               <div className="detail-row">
-                <span className="detail-icon">🔥</span>
+                <span className="detail-icon"><SectionIcon name="incidents" /></span>
                 <span className="detail-text">Incident #{participant.incidentId}</span>
               </div>
               <div className="detail-row">
-                <span className="detail-icon">🪪</span>
+                <span className="detail-icon"><SectionIcon name="users" /></span>
                 <span className="detail-text">{participant.userType || "N/A"}</span>
               </div>
               <div className="detail-row">
-                <span className="detail-icon">🌍</span>
+                <span className="detail-icon"><SectionIcon name="globe" /></span>
                 <span className="detail-text">
                   {participant.country || "-"} / {participant.municipality || "-"}
                 </span>
               </div>
               <div className="detail-row">
-                <span className="detail-icon">🧭</span>
+                <span className="detail-icon"><SectionIcon name="compass" /></span>
                 <span className="detail-text">
                   {typeof participant.lat === "number" && typeof participant.lon === "number"
                     ? `${participant.lat.toFixed(4)}, ${participant.lon.toFixed(4)}`
@@ -324,7 +321,7 @@ function Participations() {
 
       {filteredParticipants.length === 0 && (
         <div className="no-participants">
-          <span className="no-participants-icon">🔍</span>
+          <span className="no-participants-icon"><SectionIcon name="search" /></span>
           <p>No participants found matching your criteria</p>
         </div>
       )}

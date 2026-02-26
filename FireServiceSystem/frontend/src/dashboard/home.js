@@ -265,8 +265,8 @@ function Home() {
             >
               <defs>
                 <linearGradient id="incident-fill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="rgba(170, 170, 170, 0.58)" />
-                  <stop offset="100%" stopColor="rgba(35, 35, 35, 0.08)" />
+                  <stop offset="0%" stopColor="rgba(143, 194, 255, 0.62)" />
+                  <stop offset="100%" stopColor="rgba(37, 88, 173, 0.12)" />
                 </linearGradient>
               </defs>
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./history.css";
 import "./theme-overrides.css";
+import SectionIcon from "./sectionIcon";
 
 function History() {
   const [selectedFilter, setSelectedFilter] = useState("all");
@@ -129,7 +130,6 @@ function History() {
   return (
     <div className="history-container">
       <div className="content-header">
-        <h2>Incident History</h2>
         <div className="date-range-selector">
           <button 
             className={`range-btn ${dateRange === "day" ? "active" : ""}`}
@@ -161,28 +161,28 @@ function History() {
       {/* Summary Stats */}
       <div className="history-stats">
         <div className="history-stat-card">
-          <div className="stat-icon">📊</div>
+          <div className="stat-icon"><SectionIcon name="chart" /></div>
           <div className="stat-info">
             <div className="stat-value">{stats.total}</div>
             <div className="stat-label">Total Incidents</div>
           </div>
         </div>
         <div className="history-stat-card">
-          <div className="stat-icon">✅</div>
+          <div className="stat-icon"><SectionIcon name="checkCircle" /></div>
           <div className="stat-info">
             <div className="stat-value">{stats.successful}</div>
             <div className="stat-label">Successful</div>
           </div>
         </div>
         <div className="history-stat-card">
-          <div className="stat-icon">⏱️</div>
+          <div className="stat-icon"><SectionIcon name="clock" /></div>
           <div className="stat-info">
             <div className="stat-value">{stats.avgDuration}</div>
             <div className="stat-label">Avg Duration</div>
           </div>
         </div>
         <div className="history-stat-card">
-          <div className="stat-icon">👨‍🚒</div>
+          <div className="stat-icon"><SectionIcon name="firefighter" /></div>
           <div className="stat-info">
             <div className="stat-value">{stats.totalResponders}</div>
             <div className="stat-label">Total Responders</div>
@@ -202,31 +202,31 @@ function History() {
           className={`history-filter-btn ${selectedFilter === "Building Fire" ? "active" : ""}`}
           onClick={() => setSelectedFilter("Building Fire")}
         >
-          🔥 Fire
+          Fire
         </button>
         <button 
           className={`history-filter-btn ${selectedFilter === "Medical" ? "active" : ""}`}
           onClick={() => setSelectedFilter("Medical")}
         >
-          🏥 Medical
+          Medical
         </button>
         <button 
           className={`history-filter-btn ${selectedFilter === "Rescue" ? "active" : ""}`}
           onClick={() => setSelectedFilter("Rescue")}
         >
-          🆘 Rescue
+          Rescue
         </button>
         <button 
           className={`history-filter-btn ${selectedFilter === "Hazmat" ? "active" : ""}`}
           onClick={() => setSelectedFilter("Hazmat")}
         >
-          ⚠️ Hazmat
+          Hazmat
         </button>
         <button 
           className={`history-filter-btn ${selectedFilter === "Vehicle Accident" ? "active" : ""}`}
           onClick={() => setSelectedFilter("Vehicle Accident")}
         >
-          🚗 Vehicle
+          Vehicle
         </button>
       </div>
 
@@ -254,7 +254,7 @@ function History() {
                   <td className="history-incident">
                     <div className="incident-cell">
                       <div className="incident-title-cell">{item.title}</div>
-                      <div className="incident-location-cell">📍 {item.location}</div>
+                      <div className="incident-location-cell"><SectionIcon name="mapPin" /> {item.location}</div>
                     </div>
                   </td>
                   <td className="history-date">
@@ -266,7 +266,7 @@ function History() {
                     <span className="type-badge">{item.type}</span>
                   </td>
                   <td className="history-responders">
-                    <span className="responders-count">👨‍🚒 {item.responders}</span>
+                    <span className="responders-count"><SectionIcon name="firefighter" /> {item.responders}</span>
                   </td>
                   <td className="history-outcome">
                     <span 
@@ -281,7 +281,7 @@ function History() {
                   </td>
                   <td className="history-actions">
                     <button className="view-details-btn">
-                      📄 View
+                      <SectionIcon name="file" /> View
                     </button>
                   </td>
                 </tr>

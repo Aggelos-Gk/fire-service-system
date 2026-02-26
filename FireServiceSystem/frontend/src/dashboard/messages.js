@@ -5,6 +5,7 @@ import "./theme-overrides.css";
 import { fetchJson } from "../utils/api";
 import { getStoredSession, normalizeRole } from "../utils/session";
 import { formatRelativeTime } from "../utils/time";
+import SectionIcon from "./sectionIcon";
 
 const asArray = (value) => (Array.isArray(value) ? value : []);
 
@@ -335,17 +336,16 @@ function Messages() {
 
   return (
     <div className="messages-container">
-      <div className="content-header">
-        <h2>Messages</h2>
-        {session.userId && (
+      {session.userId && (
+        <div className="content-header">
           <button
             className="new-message-btn"
             onClick={() => setShowCompose((prev) => !prev)}
           >
             {showCompose ? "Close Form" : "Send Message"}
           </button>
-        )}
-      </div>
+        </div>
+      )}
 
       {error && <div className="inline-error">{error}</div>}
       {loading && <div className="inline-loading">Loading messages...</div>}
@@ -421,35 +421,35 @@ function Messages() {
       {session.userId && (
       <div className="messages-stats">
         <div className="message-stat-card">
-          <div className="stat-icon">📬</div>
+          <div className="stat-icon"><SectionIcon name="inbox" /></div>
           <div className="stat-info">
             <div className="stat-value">{stats.total}</div>
             <div className="stat-label">Total Messages</div>
           </div>
         </div>
         <div className="message-stat-card">
-          <div className="stat-icon">✉️</div>
+          <div className="stat-icon"><SectionIcon name="mail" /></div>
           <div className="stat-info">
             <div className="stat-value">{stats.unread}</div>
             <div className="stat-label">Unread</div>
           </div>
         </div>
         <div className="message-stat-card">
-          <div className="stat-icon">🌐</div>
+          <div className="stat-icon"><SectionIcon name="globe" /></div>
           <div className="stat-info">
             <div className="stat-value">{stats.public}</div>
             <div className="stat-label">Public</div>
           </div>
         </div>
         <div className="message-stat-card">
-          <div className="stat-icon">🔐</div>
+          <div className="stat-icon"><SectionIcon name="lock" /></div>
           <div className="stat-info">
             <div className="stat-value">{stats.private}</div>
             <div className="stat-label">Private</div>
           </div>
         </div>
         <div className="message-stat-card">
-          <div className="stat-icon">📤</div>
+          <div className="stat-icon"><SectionIcon name="send" /></div>
           <div className="stat-info">
             <div className="stat-value">{stats.sent}</div>
             <div className="stat-label">Sent</div>
@@ -495,7 +495,7 @@ function Messages() {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-messages-input"
           />
-          <span className="search-icon">🔍</span>
+          <span className="search-icon"><SectionIcon name="search" /></span>
         </div>
       </div>
       )}
@@ -549,7 +549,7 @@ function Messages() {
           })
         ) : (
           <div className="no-messages">
-            <span className="no-messages-icon">📭</span>
+            <span className="no-messages-icon"><SectionIcon name="inbox" /></span>
             <p>No messages found matching your criteria</p>
           </div>
         )}

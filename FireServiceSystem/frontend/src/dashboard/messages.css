@@ -190,9 +190,17 @@
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.1rem;
-  opacity: 0.5;
+  color: #7f8b9f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
   pointer-events: none;
+}
+
+.search-icon .ui-icon {
+  width: 16px;
+  height: 16px;
 }
 
 .messages-list {
@@ -359,9 +367,26 @@
 }
 
 .no-messages-icon {
-  font-size: 4rem;
-  opacity: 0.3;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #8d99ae;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
   margin-bottom: 1rem;
+}
+
+.no-messages-icon .ui-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.message-stat-card .stat-icon .ui-icon {
+  width: 18px;
+  height: 18px;
 }
 
 .no-messages p {

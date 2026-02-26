@@ -6,6 +6,7 @@ import { fetchJson } from "../utils/api";
 import { getStoredSession, normalizeRole } from "../utils/session";
 import { formatRelativeTime } from "../utils/time";
 import FreeMap from "./FreeMap";
+import SectionIcon from "./sectionIcon";
 
 const extractApiError = (error, fallback) => {
   const raw = String(error?.message || "");
@@ -371,14 +372,13 @@ function Incidents() {
 
   return (
     <div className="incidents-container">
-      <div className="content-header">
-        <h2>Incident Management</h2>
-        {userId && (
+      {userId && (
+        <div className="content-header">
           <button className="new-incident-btn" onClick={() => setShowCreateForm((prev) => !prev)}>
             {showCreateForm ? "Close Form" : "New Incident"}
           </button>
-        )}
-      </div>
+        </div>
+      )}
 
       {error && <div className="inline-error">{error}</div>}
       {loading && <div className="inline-loading">Loading incidents...</div>}
@@ -492,7 +492,7 @@ function Incidents() {
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-incidents-input"
           />
-          <span className="search-icon">🔍</span>
+          <span className="search-icon"><SectionIcon name="search" /></span>
         </div>
       </div>
 
@@ -526,25 +526,25 @@ function Incidents() {
                   <h3 className="incident-title">{incident.title}</h3>
                   <div className="incident-meta">
                     <div className="meta-item">
-                      <span className="meta-icon">📍</span>
+                      <span className="meta-icon"><SectionIcon name="mapPin" /></span>
                       <span className="meta-text">{incident.location || "No location set"}</span>
                     </div>
                     {typeof incident.lat === "number" && typeof incident.lon === "number" && (
                       <div className="meta-item">
-                        <span className="meta-icon">🧭</span>
+                        <span className="meta-icon"><SectionIcon name="compass" /></span>
                         <span className="meta-text">
                           {incident.lat.toFixed(4)}, {incident.lon.toFixed(4)}
                         </span>
                       </div>
                     )}
                     <div className="meta-item">
-                      <span className="meta-icon">🚒</span>
+                      <span className="meta-icon"><SectionIcon name="truck" /></span>
                       <span className="meta-text">
                         Need Drivers: {incident.neededDrivers ?? 0}
                       </span>
                     </div>
                     <div className="meta-item">
-                      <span className="meta-icon">🧑‍🚒</span>
+                      <span className="meta-icon"><SectionIcon name="firefighter" /></span>
                       <span className="meta-text">
                         Need Firefighters: {incident.neededFirefighters ?? 0}
                       </span>
@@ -610,7 +610,7 @@ function Incidents() {
           })
         ) : (
           <div className="no-incidents">
-            <span className="no-incidents-icon">🔍</span>
+            <span className="no-incidents-icon"><SectionIcon name="search" /></span>
             <p>No incidents found matching your criteria</p>
           </div>
         )}
