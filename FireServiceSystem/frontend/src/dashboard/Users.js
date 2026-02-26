@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { fetchJson } from "../utils/api";
 import { getStoredSession, normalizeRole } from "../utils/session";
 import "./users.css";
+import "./theme-overrides.css";
 
 function Users() {
   const session = getStoredSession();

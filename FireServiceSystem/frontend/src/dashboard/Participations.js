@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./participations.css";
+import "./theme-overrides.css";
 import { fetchJson } from "../utils/api";
 import { getStoredSession, normalizeRole } from "../utils/session";
 import { formatRelativeTime } from "../utils/time";

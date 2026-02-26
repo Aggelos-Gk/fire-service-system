@@ -1,0 +1,299 @@
+:root {
+  --mono-bg-0: #000000;
+  --mono-bg-1: #0a0a0a;
+  --mono-bg-2: #101010;
+  --mono-bg-3: #151515;
+  --mono-line: #2a2a2a;
+  --mono-line-strong: #3a3a3a;
+  --mono-text: #d6d6d6;
+  --mono-text-strong: #f1f1f1;
+  --mono-text-muted: #9a9a9a;
+}
+
+.dashboard-container,
+.dashboard-container * {
+  color-scheme: dark;
+}
+
+.dashboard-container {
+  background: var(--mono-bg-0) !important;
+}
+
+.dashboard-container .dashboard-shell {
+  background: var(--mono-bg-1) !important;
+  border-color: #1f1f1f !important;
+}
+
+.dashboard-container .dashboard-sidebar {
+  background: var(--mono-bg-3) !important;
+  border-right-color: var(--mono-line) !important;
+}
+
+.dashboard-container .dashboard-main,
+.dashboard-container .dashboard-topbar,
+.dashboard-container .dashboard-content {
+  background: var(--mono-bg-0) !important;
+}
+
+.dashboard-container .topbar-divider {
+  background: #2d2d2d !important;
+}
+
+.dashboard-container .topbar-title h1,
+.dashboard-container .content-header h2,
+.dashboard-container h3,
+.dashboard-container h4,
+.dashboard-container strong {
+  color: var(--mono-text-strong) !important;
+  -webkit-text-fill-color: var(--mono-text-strong) !important;
+}
+
+.dashboard-container p,
+.dashboard-container span,
+.dashboard-container td,
+.dashboard-container th,
+.dashboard-container label,
+.dashboard-container small,
+.dashboard-container .meta-item,
+.dashboard-container .meta-text,
+.dashboard-container .detail-item,
+.dashboard-container .detail-text,
+.dashboard-container .profile-meta,
+.dashboard-container .profile-note,
+.dashboard-container .users-empty,
+.dashboard-container .notification-time,
+.dashboard-container .notification-empty {
+  color: var(--mono-text-muted) !important;
+  -webkit-text-fill-color: var(--mono-text-muted) !important;
+}
+
+.dashboard-container .quick-create-button {
+  background: #e7e7e7 !important;
+  color: #000000 !important;
+  border-color: #d8d8d8 !important;
+}
+
+.dashboard-container .quick-create-button .ui-icon {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+.dashboard-container .sidebar-item {
+  background: transparent !important;
+  border: none !important;
+  color: #d7d7d7 !important;
+  box-shadow: none !important;
+}
+
+.dashboard-container .sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #f1f1f1 !important;
+}
+
+.dashboard-container .sidebar-item.active,
+.dashboard-container .sidebar-item.active * {
+  background: #efefef !important;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+.dashboard-container .sidebar-item.active .ui-icon,
+.dashboard-container .sidebar-item.active .sidebar-item-icon {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+.dashboard-container .brand-button,
+.dashboard-container .sidebar-user-main,
+.dashboard-container .sidebar-user-menu-btn,
+.dashboard-container .sidebar-login-btn {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+.dashboard-container .sidebar-user-card {
+  background: #171717 !important;
+  border-color: #2f2f2f !important;
+}
+
+.dashboard-container .sidebar-avatar {
+  background: #252525 !important;
+  border-color: #373737 !important;
+  color: #f0f0f0 !important;
+}
+
+.dashboard-container button:not(.sidebar-item):not(.brand-button):not(.sidebar-user-main):not(.sidebar-user-menu-btn):not(.sidebar-login-btn):not(.quick-create-button) {
+  background: #1a1a1a !important;
+  border: 1px solid #343434 !important;
+  color: #efefef !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.dashboard-container button:not(.sidebar-item):not(.brand-button):not(.sidebar-user-main):not(.sidebar-user-menu-btn):not(.sidebar-login-btn):not(.quick-create-button):hover {
+  background: #232323 !important;
+  border-color: #444444 !important;
+}
+
+.dashboard-container input,
+.dashboard-container textarea,
+.dashboard-container select {
+  background: #0f0f0f !important;
+  border: 1px solid #363636 !important;
+  color: #ececec !important;
+}
+
+.dashboard-container input:focus,
+.dashboard-container textarea:focus,
+.dashboard-container select:focus {
+  border-color: #595959 !important;
+  box-shadow: 0 0 0 3px rgba(120, 120, 120, 0.2) !important;
+}
+
+.dashboard-container input::placeholder,
+.dashboard-container textarea::placeholder {
+  color: #828282 !important;
+}
+
+.dashboard-container .data-error,
+.dashboard-container .inline-error {
+  background: rgba(180, 70, 70, 0.18) !important;
+  border: 1px solid rgba(180, 70, 70, 0.35) !important;
+  color: #e4b5b5 !important;
+}
+
+.dashboard-container .data-loading,
+.dashboard-container .inline-loading,
+.dashboard-container .inline-success {
+  background: rgba(130, 130, 130, 0.14) !important;
+  border: 1px solid rgba(130, 130, 130, 0.32) !important;
+  color: #d4d4d4 !important;
+}
+
+.dashboard-container .main-card,
+.dashboard-container .home-summary-card,
+.dashboard-container .home-trend-panel,
+.dashboard-container .home-list-card,
+.dashboard-container .incident-form-card,
+.dashboard-container .message-form-card,
+.dashboard-container .request-board,
+.dashboard-container .message-stat-card,
+.dashboard-container .participant-stat-card,
+.dashboard-container .history-stat-card,
+.dashboard-container .message-card,
+.dashboard-container .incident-card,
+.dashboard-container .participant-card,
+.dashboard-container .user-card,
+.dashboard-container .history-table-container,
+.dashboard-container .request-panel,
+.dashboard-container .request-item,
+.dashboard-container .request-card,
+.dashboard-container .incident-modal,
+.dashboard-container .notifications-dropdown,
+.dashboard-container .user-dropdown {
+  background: var(--mono-bg-2) !important;
+  background-image: none !important;
+  border: 1px solid var(--mono-line) !important;
+  box-shadow: none !important;
+}
+
+.dashboard-container .history-table thead {
+  background: #151515 !important;
+}
+
+.dashboard-container .history-table th {
+  color: #a8a8a8 !important;
+  border-bottom: 1px solid #2b2b2b !important;
+}
+
+.dashboard-container .history-table td {
+  color: #cbcbcb !important;
+  border-bottom: 1px solid #222222 !important;
+}
+
+.dashboard-container .history-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.dashboard-container .status-badge,
+.dashboard-container .type-badge,
+.dashboard-container .priority-badge,
+.dashboard-container .outcome-badge,
+.dashboard-container .request-status,
+.dashboard-container .user-role,
+.dashboard-container .participant-role {
+  background: rgba(160, 160, 160, 0.16) !important;
+  border: 1px solid #4a4a4a !important;
+  color: #e0e0e0 !important;
+  -webkit-text-fill-color: #e0e0e0 !important;
+}
+
+.dashboard-container .notification-item,
+.dashboard-container .request-item,
+.dashboard-container .home-list-row {
+  background: #161616 !important;
+  border: 1px solid #2b2b2b !important;
+}
+
+.dashboard-container .notification-item.unread,
+.dashboard-container .request-card.highlight,
+.dashboard-container .incident-card.highlight,
+.dashboard-container .message-card.highlight {
+  border-color: #5a5a5a !important;
+  box-shadow: 0 0 0 2px rgba(110, 110, 110, 0.25) !important;
+}
+
+.dashboard-container .incident-modal-backdrop {
+  background: rgba(0, 0, 0, 0.82) !important;
+}
+
+.dashboard-container .free-map {
+  background: #0a0a0a !important;
+  border: 1px solid #2f2f2f !important;
+}
+
+.dashboard-container .free-map-zoom-btn {
+  background: #171717 !important;
+  border: 1px solid #333333 !important;
+  color: #e0e0e0 !important;
+}
+
+.dashboard-container .free-map-zoom-btn:hover {
+  background: #232323 !important;
+}
+
+.dashboard-container .free-map-attribution {
+  background: rgba(0, 0, 0, 0.55) !important;
+  color: #cfcfcf !important;
+}
+
+.dashboard-container .free-map-empty {
+  color: #9a9a9a !important;
+}
+
+.dashboard-container .chart-line.line-main {
+  stroke: #bbbbbb !important;
+}
+
+.dashboard-container .chart-line.line-secondary {
+  stroke: #8c8c8c !important;
+}
+
+.dashboard-container .messages-list,
+.dashboard-container .incidents-list,
+.dashboard-container .users-list,
+.dashboard-container .participants-grid,
+.dashboard-container .history-table-container,
+.dashboard-container .home-list-body,
+.dashboard-container .request-board {
+  scrollbar-color: rgba(125, 125, 125, 0.6) transparent;
+}
+
+@media (max-width: 768px) {
+  .dashboard-container .messages-list,
+  .dashboard-container .incidents-list,
+  .dashboard-container .users-list,
+  .dashboard-container .participants-grid {
+    max-height: none !important;
+  }
+}

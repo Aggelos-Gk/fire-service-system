@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./history.css";
+import "./theme-overrides.css";
 
 function History() {
   const [selectedFilter, setSelectedFilter] = useState("all");
@@ -106,9 +107,9 @@ function History() {
 
   const getOutcomeBadge = (outcome) => {
     const styles = {
-      "Successful": { bg: "rgba(100, 255, 218, 0.15)", color: "#64ffda" },
-      "Partial Loss": { bg: "rgba(255, 167, 38, 0.15)", color: "#ffa726" },
-      "Total Loss": { bg: "rgba(255, 82, 82, 0.15)", color: "#ff5252" }
+      "Successful": { bg: "rgba(145, 145, 145, 0.2)", color: "#dedede" },
+      "Partial Loss": { bg: "rgba(120, 120, 120, 0.2)", color: "#d2d2d2" },
+      "Total Loss": { bg: "rgba(95, 95, 95, 0.24)", color: "#c9c9c9" }
     };
     return styles[outcome] || styles["Successful"];
   };

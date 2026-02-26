@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./freemap.css";
+import "./theme-overrides.css";
 
 const TILE_SIZE = 256;
 const MIN_ZOOM = 3;
@@ -38,9 +39,9 @@ function wrapTileX(x, zoom) {
 }
 
 function markerColor(type) {
-  if (type === "user") return "#64ffda";
-  if (type === "incident") return "#ff6b6b";
-  return "#ffa726";
+  if (type === "user") return "#c9c9c9";
+  if (type === "incident") return "#a8a8a8";
+  return "#8f8f8f";
 }
 
 function clampZoom(zoom) {

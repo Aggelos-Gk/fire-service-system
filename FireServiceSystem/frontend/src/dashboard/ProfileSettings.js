@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchJson } from "../utils/api";
 import { getStoredSession } from "../utils/session";
 import "./profile.css";
+import "./theme-overrides.css";
 
 function ProfileSettings() {
   const navigate = useNavigate();

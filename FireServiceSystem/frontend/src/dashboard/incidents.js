@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./incidents.css";
+import "./theme-overrides.css";
 import { fetchJson } from "../utils/api";
 import { getStoredSession, normalizeRole } from "../utils/session";
 import { formatRelativeTime } from "../utils/time";
@@ -173,15 +174,15 @@ function Incidents() {
   const getStatusBadge = (status) => {
     const normalized = (status || "").toLowerCase();
     if (normalized === "active") {
-      return { bg: "rgba(255, 107, 107, 0.15)", color: "#ff6b6b", text: "Active" };
+      return { bg: "rgba(175, 175, 175, 0.2)", color: "#efefef", text: "Active" };
     }
     if (normalized === "resolved") {
-      return { bg: "rgba(100, 255, 218, 0.15)", color: "#64ffda", text: "Resolved" };
+      return { bg: "rgba(145, 145, 145, 0.2)", color: "#dddddd", text: "Resolved" };
     }
     if (normalized === "requested") {
-      return { bg: "rgba(100, 181, 246, 0.15)", color: "#64b5f6", text: "Requested" };
+      return { bg: "rgba(120, 120, 120, 0.2)", color: "#d2d2d2", text: "Requested" };
     }
-    return { bg: "rgba(255, 167, 38, 0.15)", color: "#ffa726", text: status || "Unknown" };
+    return { bg: "rgba(120, 120, 120, 0.2)", color: "#d2d2d2", text: status || "Unknown" };
   };
 
   const updateIncidentStatus = async (incident, newStatus) => {
