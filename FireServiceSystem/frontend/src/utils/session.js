@@ -1,5 +1,9 @@
 export function normalizeRole(role) {
-  return (role || "").toUpperCase();
+  const normalized = (role || "").trim().toUpperCase();
+  if (normalized.startsWith("ROLE_")) {
+    return normalized.slice(5);
+  }
+  return normalized;
 }
 
 export function getStoredSession() {

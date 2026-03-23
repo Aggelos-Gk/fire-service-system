@@ -125,18 +125,21 @@ function Dashboard() {
     return [
       { id: "home", label: "Dashboard", icon: "home" },
       { id: "incidents", label: "Incidents", icon: "incidents" },
+      ...(normalizedRole === "VOLUNTEER"
+        ? [{ id: "participations", label: "Participations", icon: "participations" }]
+        : []),
       { id: "history", label: "History", icon: "history" },
       { id: "messages", label: "Messages", icon: "messages" }
     ];
   }, [loggedIn, normalizedRole]);
 
-  const markNotificationAsRead = useCallback((notificationId) => {
+  const dismissNotification = useCallback((notificationId) => {
     setNotifications((prev) => prev.filter((item) => item.id !== notificationId));
     if (!session.userId) {
       return;
     }
-    fetchJson("/api/notifications/read", {
-      method: "PUT",
+    fetchJson("/api/notifications/dismiss", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         viewerId: session.userId,
@@ -144,17 +147,17 @@ function Dashboard() {
       })
     })
       .then(() => window.dispatchEvent(new Event("notifications:refresh")))
-      .catch((error) => console.error("Failed marking notification as read:", error));
+      .catch((error) => console.error("Failed dismissing notification:", error));
   }, [session.userId]);
 
-  const markAllNotificationsAsRead = useCallback(() => {
+  const dismissAllNotifications = useCallback(() => {
     if (!session.userId || notifications.length === 0) {
       return;
     }
     const ids = notifications.map((item) => item.id);
     setNotifications([]);
-    fetchJson("/api/notifications/read", {
-      method: "PUT",
+    fetchJson("/api/notifications/dismiss", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         viewerId: session.userId,
@@ -162,7 +165,7 @@ function Dashboard() {
       })
     })
       .then(() => window.dispatchEvent(new Event("notifications:refresh")))
-      .catch((error) => console.error("Failed marking all notifications as read:", error));
+      .catch((error) => console.error("Failed dismissing all notifications:", error));
   }, [notifications, session.userId]);
 
   const loadNotifications = useCallback(async () => {
@@ -256,7 +259,7 @@ function Dashboard() {
   const displayName = session.displayName || session.username || "Guest User";
   const secondaryMenu = loggedIn
     ? [{ id: "profile", label: "Profile Settings", icon: "settings", route: "/dashboard/profile" }]
-    : [{ id: "login", label: "Login", icon: "login", route: "/login" }];
+    : [];
 
   const pageTitle = (() => {
     const allItems = [...menuItems, ...secondaryMenu];
@@ -279,7 +282,16 @@ function Dashboard() {
             </button>
           </div>
 
-          <button className="quick-create-button" onClick={() => navigate("/dashboard/incidents")}>
+          <button
+            className="quick-create-button"
+            onClick={() => {
+              if (!loggedIn) {
+                navigate("/login");
+                return;
+              }
+              navigate(`/dashboard/incidents?create=1&ts=${Date.now()}`);
+            }}
+          >
             <Icon name="quick" />
             <span>Quick Create</span>
           </button>
@@ -301,25 +313,27 @@ function Dashboard() {
             </ul>
           </nav>
 
-          <nav className="sidebar-nav secondary">
-            <p className="sidebar-section-label">Account</p>
-            <ul>
-              {secondaryMenu.map((item) => (
-                <li key={item.id}>
-                  <button
-                    className={`sidebar-item ${activeMenu === item.id ? "active" : ""}`}
-                    onClick={() => {
-                      if (item.id === "profile") setActiveMenu("profile");
-                      navigate(item.route);
-                    }}
-                  >
-                    <Icon name={item.icon} className="sidebar-item-icon" />
-                    <span className="sidebar-label">{item.label}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {secondaryMenu.length > 0 && (
+            <nav className="sidebar-nav secondary">
+              <p className="sidebar-section-label">Account</p>
+              <ul>
+                {secondaryMenu.map((item) => (
+                  <li key={item.id}>
+                    <button
+                      className={`sidebar-item ${activeMenu === item.id ? "active" : ""}`}
+                      onClick={() => {
+                        if (item.id === "profile") setActiveMenu("profile");
+                        navigate(item.route);
+                      }}
+                    >
+                      <Icon name={item.icon} className="sidebar-item-icon" />
+                      <span className="sidebar-label">{item.label}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
 
           {loggedIn ? (
             <div className="sidebar-user-card" ref={userMenuRef}>
@@ -424,7 +438,7 @@ function Dashboard() {
                             type="button"
                             className="notification-item unread"
                             onClick={() => {
-                              markNotificationAsRead(item.id);
+                              dismissNotification(item.id);
                               setShowNotifications(false);
                               if (item.route) navigate(item.route);
                             }}
@@ -439,8 +453,8 @@ function Dashboard() {
                           </button>
                         ))}
                       </div>
-                      <button className="view-all-btn" onClick={markAllNotificationsAsRead}>
-                        Mark All As Read
+                      <button className="view-all-btn" onClick={dismissAllNotifications}>
+                        Dismiss All
                       </button>
                     </div>
                   )}

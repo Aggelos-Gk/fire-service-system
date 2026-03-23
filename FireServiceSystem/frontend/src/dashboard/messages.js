@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./messages.css";
 import "./theme-overrides.css";
@@ -110,6 +110,8 @@ function Messages() {
   const [sending, setSending] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const messageCardRefs = useRef(new Map());
+  const openedMessageNotificationRef = useRef(null);
 
   useEffect(() => {
     setReadIds(asArray(JSON.parse(localStorage.getItem(readStorageKey) || "[]")));
@@ -185,8 +187,8 @@ function Messages() {
       return;
     }
 
-    fetchJson("/api/notifications/read", {
-      method: "PUT",
+    fetchJson("/api/notifications/dismiss", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         viewerId: session.userId,
@@ -194,7 +196,7 @@ function Messages() {
       })
     })
       .then(() => window.dispatchEvent(new Event("notifications:refresh")))
-      .catch((markError) => console.error("Failed marking message notification as read:", markError));
+      .catch((markError) => console.error("Failed dismissing message notification:", markError));
   }, [readStorageKey, session.userId]);
 
   useEffect(() => {
@@ -215,6 +217,10 @@ function Messages() {
 
   useEffect(() => {
     if (Number.isFinite(openMessageId)) {
+      if (openedMessageNotificationRef.current === openMessageId) {
+        return;
+      }
+      openedMessageNotificationRef.current = openMessageId;
       markAsRead(openMessageId);
     }
   }, [openMessageId, markAsRead]);
@@ -252,6 +258,21 @@ function Messages() {
       return matchesFilter && matchesSearch;
     });
   }, [visibleMessages, filterType, searchTerm, session.userId, usersById]);
+
+  useEffect(() => {
+    if (!Number.isFinite(openMessageId)) {
+      return;
+    }
+
+    const handle = window.requestAnimationFrame(() => {
+      const card = messageCardRefs.current.get(openMessageId);
+      if (card) {
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+
+    return () => window.cancelAnimationFrame(handle);
+  }, [filteredMessages, openMessageId]);
 
   const stats = useMemo(() => {
     const isViewer = (userId) => session.userId && String(userId) === String(session.userId);
@@ -519,6 +540,14 @@ function Messages() {
               <div
                 key={message.id}
                 className={`message-card ${openMessageId === message.id ? "highlight" : ""}`}
+                data-message-id={message.id}
+                ref={(node) => {
+                  if (node) {
+                    messageCardRefs.current.set(message.id, node);
+                  } else {
+                    messageCardRefs.current.delete(message.id);
+                  }
+                }}
                 onClick={() => markAsRead(message.id)}
               >
                 <div className="message-plain-top">

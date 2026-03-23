@@ -19,7 +19,7 @@
   height: 100vh;
   max-height: 100vh;
   overflow: hidden;
-  padding: 12px;
+  padding: 20px 16px 16px;
   background: #111111;
   color: var(--text-main);
   font-family: "Plus Jakarta Sans", "Manrope", "Nunito Sans", sans-serif;

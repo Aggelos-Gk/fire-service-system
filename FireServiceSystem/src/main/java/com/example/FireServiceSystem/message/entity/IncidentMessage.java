@@ -24,7 +24,7 @@ public class IncidentMessage {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false, columnDefinition = "CLOB")
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
     @Column(name = "message_type", nullable = false)

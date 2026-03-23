@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface ParticipantRepository extends JpaRepository<Participant, Long> {
     List<Participant> findByIncidentIdOrderByJoinedAtDesc(Long incidentId);
+    List<Participant> findByUserIdOrderByJoinedAtDesc(Long userId);
+    List<Participant> findByIncidentIdAndUserIdOrderByJoinedAtDesc(Long incidentId, Long userId);
     boolean existsByIncidentIdAndUserId(Long incidentId, Long userId);
     long countByIncidentIdAndRoleIgnoreCase(Long incidentId, String role);
     void deleteByUserId(Long userId);

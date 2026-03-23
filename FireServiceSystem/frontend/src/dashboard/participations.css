@@ -182,15 +182,15 @@
 }
 
 .decision-btn.approve {
-  background: rgba(100, 255, 218, 0.13);
-  border-color: rgba(100, 255, 218, 0.3);
-  color: #7effdc;
+  background: rgba(48, 122, 83, 0.35);
+  border-color: rgba(87, 168, 123, 0.42);
+  color: #b7e8cc;
 }
 
 .decision-btn.reject {
-  background: rgba(255, 82, 82, 0.12);
-  border-color: rgba(255, 82, 82, 0.25);
-  color: #ff9494;
+  background: rgba(128, 53, 53, 0.34);
+  border-color: rgba(191, 95, 95, 0.45);
+  color: #f0b5b5;
 }
 
 .participants-stats {
@@ -303,9 +303,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 1.5rem;
-  max-height: calc(100vh - 440px);
-  overflow-y: auto;
-  padding-right: 0.35rem;
+  max-height: none;
+  overflow: visible;
+  padding-right: 0;
 }
 
 .participant-card {

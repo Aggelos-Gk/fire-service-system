@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import "./incidents.css";
 import "./theme-overrides.css";
 import { fetchJson } from "../utils/api";
@@ -22,9 +22,27 @@ const extractApiError = (error, fallback) => {
   return fallback;
 };
 
+const normalizeParticipantRole = (value) => {
+  const normalized = String(value || "").trim().toLowerCase();
+  if (normalized === "driver") return "Driver";
+  if (normalized === "firefighter") return "Firefighter";
+  return "";
+};
+
+const normalizeRequestedRole = (value) => {
+  const normalized = String(value || "").trim().toUpperCase();
+  if (normalized === "DRIVER" || normalized === "FIREFIGHTER") {
+    return normalized;
+  }
+  return "";
+};
+
 function Incidents() {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const openIncidentId = Number(searchParams.get("open"));
+  const openIncidentParam = searchParams.get("open");
+  const openIncidentId = openIncidentParam ? Number(openIncidentParam) : Number.NaN;
+  const openCreateForm = searchParams.get("create") === "1";
 
   const session = getStoredSession();
   const role = normalizeRole(session.role);
@@ -37,13 +55,18 @@ function Incidents() {
   const [incidents, setIncidents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [selectedIncident, setSelectedIncident] = useState(null);
   const [participantRequests, setParticipantRequests] = useState([]);
   const [incidentParticipants, setIncidentParticipants] = useState([]);
+  const [volunteerRequestByIncident, setVolunteerRequestByIncident] = useState({});
+  const [joinedIncidentIds, setJoinedIncidentIds] = useState(new Set());
   const [volunteerRole, setVolunteerRole] = useState("");
   const [requestLoading, setRequestLoading] = useState(false);
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [createLoading, setCreateLoading] = useState(false);
+  const incidentCardRefs = useRef(new Map());
+  const openedIncidentNotificationRef = useRef(null);
   const [createForm, setCreateForm] = useState({
     title: "",
     description: "",
@@ -53,6 +76,23 @@ function Incidents() {
     neededDrivers: "0",
     neededFirefighters: "0"
   });
+
+  const dismissIncidentNotification = useCallback((incidentId) => {
+    if (!userId || !Number.isFinite(incidentId)) {
+      return;
+    }
+
+    fetchJson("/api/notifications/dismiss", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        viewerId: userId,
+        notificationIds: [`incident-${incidentId}`]
+      })
+    })
+      .then(() => window.dispatchEvent(new Event("notifications:refresh")))
+      .catch((error) => console.error("Failed dismissing incident notification:", error));
+  }, [userId]);
 
   const loadIncidents = useCallback(async (initial = false) => {
     try {
@@ -81,10 +121,16 @@ function Incidents() {
     try {
       if (isAdmin) {
         const rows = await fetchJson(`/api/participants/requests?incidentId=${incidentId}`);
-        setParticipantRequests(Array.isArray(rows) ? rows : []);
+        const normalized = (Array.isArray(rows) ? rows : [])
+          .map((item) => ({ ...item, requestedRole: normalizeRequestedRole(item?.requestedRole) }))
+          .filter((item) => Boolean(item.requestedRole));
+        setParticipantRequests(normalized);
       } else if (isVolunteer && userId) {
         const rows = await fetchJson(`/api/participants/requests?incidentId=${incidentId}&userId=${userId}`);
-        setParticipantRequests(Array.isArray(rows) ? rows : []);
+        const normalized = (Array.isArray(rows) ? rows : [])
+          .map((item) => ({ ...item, requestedRole: normalizeRequestedRole(item?.requestedRole) }))
+          .filter((item) => Boolean(item.requestedRole));
+        setParticipantRequests(normalized);
       } else {
         setParticipantRequests([]);
       }
@@ -102,12 +148,57 @@ function Incidents() {
 
     try {
       const rows = await fetchJson(`/api/participants?incidentId=${incidentId}`);
-      setIncidentParticipants(Array.isArray(rows) ? rows : []);
+      const normalized = (Array.isArray(rows) ? rows : [])
+        .map((item) => ({ ...item, role: normalizeParticipantRole(item?.role) }))
+        .filter((item) => Boolean(item.role));
+      setIncidentParticipants(normalized);
     } catch (participantError) {
       console.error(participantError);
       setIncidentParticipants([]);
     }
   }, []);
+
+  const loadVolunteerParticipationState = useCallback(async () => {
+    if (!isVolunteer || !userId) {
+      setVolunteerRequestByIncident({});
+      setJoinedIncidentIds(new Set());
+      return;
+    }
+
+    try {
+      const [requestRows, participantRows] = await Promise.all([
+        fetchJson(`/api/participants/requests?userId=${userId}`),
+        fetchJson(`/api/participants?userId=${userId}`)
+      ]);
+
+      const requestMap = {};
+      const sortedRequests = (Array.isArray(requestRows) ? requestRows : [])
+        .slice()
+        .sort((a, b) => {
+          const timeA = new Date(a.decidedAt || a.createdAt || 0).getTime();
+          const timeB = new Date(b.decidedAt || b.createdAt || 0).getTime();
+          return timeB - timeA;
+        });
+      sortedRequests.forEach((request) => {
+        const incidentId = Number(request?.incidentId);
+        if (!Number.isFinite(incidentId) || requestMap[incidentId]) {
+          return;
+        }
+        requestMap[incidentId] = String(request.status || "").toLowerCase();
+      });
+
+      const joined = new Set(
+        (Array.isArray(participantRows) ? participantRows : [])
+          .map((row) => Number(row?.incidentId))
+          .filter((id) => Number.isFinite(id))
+      );
+
+      setVolunteerRequestByIncident(requestMap);
+      setJoinedIncidentIds(joined);
+    } catch (stateError) {
+      console.error("Failed loading volunteer participation state:", stateError);
+    }
+  }, [isVolunteer, userId]);
 
   useEffect(() => {
     loadIncidents(true);
@@ -116,12 +207,39 @@ function Incidents() {
   }, [loadIncidents]);
 
   useEffect(() => {
+    if (!isVolunteer || !userId) {
+      setVolunteerRequestByIncident({});
+      setJoinedIncidentIds(new Set());
+      return undefined;
+    }
+
+    loadVolunteerParticipationState();
+    const timer = setInterval(loadVolunteerParticipationState, 45000);
+    return () => clearInterval(timer);
+  }, [isVolunteer, loadVolunteerParticipationState, userId]);
+
+  useEffect(() => {
     if (!Number.isFinite(openIncidentId)) return;
+    if (userId && openedIncidentNotificationRef.current !== openIncidentId) {
+      openedIncidentNotificationRef.current = openIncidentId;
+      dismissIncidentNotification(openIncidentId);
+    }
     const found = incidents.find((incident) => incident.id === openIncidentId);
     if (found) {
       setSelectedIncident(found);
     }
-  }, [incidents, openIncidentId]);
+  }, [dismissIncidentNotification, incidents, openIncidentId, userId]);
+
+  useEffect(() => {
+    if (!openCreateForm) {
+      return;
+    }
+    if (!userId) {
+      navigate("/login");
+      return;
+    }
+    setShowCreateForm(true);
+  }, [navigate, openCreateForm, userId]);
 
   useEffect(() => {
     if (selectedIncident?.id) {
@@ -167,6 +285,21 @@ function Incidents() {
     });
   }, [incidents, filterStatus, searchTerm]);
 
+  useEffect(() => {
+    if (!Number.isFinite(openIncidentId)) {
+      return;
+    }
+
+    const handle = window.requestAnimationFrame(() => {
+      const card = incidentCardRefs.current.get(openIncidentId);
+      if (card) {
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+
+    return () => window.cancelAnimationFrame(handle);
+  }, [filteredIncidents, openIncidentId]);
+
   const pendingRequests = useMemo(
     () => participantRequests.filter((item) => (item.status || "").toLowerCase() === "requested"),
     [participantRequests]
@@ -189,6 +322,7 @@ function Incidents() {
   const updateIncidentStatus = async (incident, newStatus) => {
     if (!isAdmin || !userId) return;
     try {
+      setSuccess("");
       await fetchJson(`/api/incidents/${incident.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -198,6 +332,7 @@ function Incidents() {
       if (selectedIncident?.id === incident.id) {
         setSelectedIncident((prev) => (prev ? { ...prev, status: newStatus } : prev));
       }
+      window.dispatchEvent(new Event("notifications:refresh"));
     } catch (updateError) {
       console.error(updateError);
       setError("Failed updating incident status.");
@@ -223,6 +358,7 @@ function Incidents() {
     try {
       setCreateLoading(true);
       setError("");
+      setSuccess("");
       await fetchJson("/api/incidents", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -250,6 +386,7 @@ function Incidents() {
       });
       setShowCreateForm(false);
       await loadIncidents(false);
+      window.dispatchEvent(new Event("notifications:refresh"));
     } catch (submitError) {
       console.error(submitError);
       setError("Failed creating incident.");
@@ -266,6 +403,7 @@ function Incidents() {
     try {
       setRequestLoading(true);
       setError("");
+      setSuccess("");
       await fetchJson("/api/participants/requests", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -279,6 +417,9 @@ function Incidents() {
         await loadParticipantRequests(incident.id);
         await loadIncidentParticipants(incident.id);
       }
+      await loadVolunteerParticipationState();
+      setSuccess("Participation request sent successfully.");
+      window.dispatchEvent(new Event("notifications:refresh"));
     } catch (requestError) {
       console.error(requestError);
       setError(extractApiError(requestError, "Failed sending participation request."));
@@ -299,6 +440,7 @@ function Incidents() {
 
     try {
       setError("");
+      setSuccess("");
       await fetchJson(`/api/incidents/${incident.id}?actorId=${encodeURIComponent(userId)}`, {
         method: "DELETE"
       });
@@ -306,6 +448,7 @@ function Incidents() {
         setSelectedIncident(null);
       }
       await loadIncidents(false);
+      window.dispatchEvent(new Event("notifications:refresh"));
     } catch (deleteError) {
       console.error(deleteError);
       setError(extractApiError(deleteError, "Failed deleting incident."));
@@ -316,6 +459,7 @@ function Incidents() {
     if (!isAdmin || !userId) return;
     try {
       setError("");
+      setSuccess("");
       await fetchJson(`/api/participants/requests/${requestId}/decision`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -326,7 +470,9 @@ function Incidents() {
       });
       if (selectedIncident?.id) {
         await loadParticipantRequests(selectedIncident.id);
+        await loadIncidentParticipants(selectedIncident.id);
       }
+      window.dispatchEvent(new Event("notifications:refresh"));
     } catch (decisionError) {
       console.error(decisionError);
       setError("Failed updating volunteer request.");
@@ -340,9 +486,25 @@ function Incidents() {
     return date.toLocaleString();
   };
 
-  const hasPendingOwnRequest = useMemo(
-    () => participantRequests.some((request) => (request.status || "").toLowerCase() === "requested"),
-    [participantRequests]
+  const latestOwnRequestStatus = useMemo(() => {
+    if (!isVolunteer || !userId || !selectedIncident?.id) {
+      return "";
+    }
+    const ownRequests = participantRequests
+      .filter((request) => Number(request?.userId) === Number(userId))
+      .slice()
+      .sort((a, b) => {
+        const timeA = new Date(a.decidedAt || a.createdAt || 0).getTime();
+        const timeB = new Date(b.decidedAt || b.createdAt || 0).getTime();
+        return timeB - timeA;
+      });
+
+    return String(ownRequests[0]?.status || "").toLowerCase();
+  }, [isVolunteer, participantRequests, selectedIncident?.id, userId]);
+
+  const isAlreadyParticipant = useMemo(
+    () => incidentParticipants.some((item) => Number(item?.userId) === Number(userId)),
+    [incidentParticipants, userId]
   );
 
   const assignedDrivers = useMemo(
@@ -372,15 +534,23 @@ function Incidents() {
 
   return (
     <div className="incidents-container">
-      {userId && (
-        <div className="content-header">
-          <button className="new-incident-btn" onClick={() => setShowCreateForm((prev) => !prev)}>
-            {showCreateForm ? "Close Form" : "New Incident"}
-          </button>
-        </div>
-      )}
+      <div className="content-header">
+        <button
+          className="new-incident-btn"
+          onClick={() => {
+            if (!userId) {
+              navigate("/login");
+              return;
+            }
+            setShowCreateForm((prev) => !prev);
+          }}
+        >
+          {showCreateForm ? "Close Form" : "New Incident"}
+        </button>
+      </div>
 
       {error && <div className="inline-error">{error}</div>}
+      {success && <div className="inline-success">{success}</div>}
       {loading && <div className="inline-loading">Loading incidents...</div>}
 
       {showCreateForm && userId && (
@@ -503,11 +673,39 @@ function Incidents() {
             const resolved = (incident.status || "").toLowerCase() === "resolved";
             const requested = (incident.status || "").toLowerCase() === "requested";
             const canVolunteerRequest = canVolunteerRequestIncident(incident);
+            const incidentId = Number(incident?.id);
+            const ownRequestStatus = Number.isFinite(incidentId) ? volunteerRequestByIncident[incidentId] : "";
+            const alreadyJoined = Number.isFinite(incidentId) ? joinedIncidentIds.has(incidentId) : false;
+            const volunteerButtonLabel = alreadyJoined
+              ? "Joined"
+              : ownRequestStatus === "requested"
+                ? "Already Requested"
+                : ownRequestStatus === "approved"
+                  ? "Approved"
+                  : ownRequestStatus === "rejected"
+                    ? "Request Again"
+                    : volunteerRole
+                      ? "Request Join"
+                      : "Set Role First";
+            const volunteerButtonDisabled =
+              requestLoading
+              || !volunteerRole
+              || alreadyJoined
+              || ownRequestStatus === "requested"
+              || ownRequestStatus === "approved";
 
             return (
               <div
                 key={incident.id}
                 className={`incident-card ${openIncidentId === incident.id ? "highlight" : ""}`}
+                data-incident-id={incident.id}
+                ref={(node) => {
+                  if (node) {
+                    incidentCardRefs.current.set(incident.id, node);
+                  } else {
+                    incidentCardRefs.current.delete(incident.id);
+                  }
+                }}
               >
                 <div className="incident-header">
                   <div className="incident-id-section">
@@ -564,9 +762,9 @@ function Incidents() {
                     <button
                       className="incident-action-btn update-btn"
                       onClick={() => requestJoinIncidentFor(incident)}
-                      disabled={requestLoading || !volunteerRole}
+                      disabled={volunteerButtonDisabled}
                     >
-                      {requestLoading ? "Sending..." : volunteerRole ? "Request Join" : "Set Role First"}
+                      {requestLoading ? "Sending..." : volunteerButtonLabel}
                     </button>
                   )}
 
@@ -681,17 +879,38 @@ function Incidents() {
                             <button
                               className="incident-action-btn view-btn"
                               onClick={requestJoinIncident}
-                              disabled={requestLoading || hasPendingOwnRequest || volunteerNeed.remaining <= 0}
+                              disabled={
+                                requestLoading
+                                || isAlreadyParticipant
+                                || latestOwnRequestStatus === "requested"
+                                || latestOwnRequestStatus === "approved"
+                                || volunteerNeed.remaining <= 0
+                              }
                             >
-                              {hasPendingOwnRequest
-                                ? "Already Requested"
-                                : volunteerNeed.remaining <= 0
-                                  ? "No Open Slots"
-                                  : requestLoading
-                                    ? "Sending..."
-                                    : "Request Join"}
+                              {isAlreadyParticipant
+                                ? "Joined"
+                                : latestOwnRequestStatus === "requested"
+                                  ? "Already Requested"
+                                  : latestOwnRequestStatus === "approved"
+                                    ? "Approved"
+                                    : latestOwnRequestStatus === "rejected"
+                                      ? "Request Again"
+                                      : volunteerNeed.remaining <= 0
+                                        ? "No Open Slots"
+                                        : requestLoading
+                                          ? "Sending..."
+                                          : "Request Join"}
                             </button>
                           </div>
+                          {latestOwnRequestStatus === "approved" && !isAlreadyParticipant && (
+                            <p>Your request is approved and will appear as joined after participant sync refresh.</p>
+                          )}
+                          {latestOwnRequestStatus === "rejected" && (
+                            <p>Your previous request was rejected. You can submit a new request if slots are open.</p>
+                          )}
+                          {isAlreadyParticipant && (
+                            <p>You are already assigned to this incident.</p>
+                          )}
                         </>
                       ) : (
                         <p>Set your volunteer role in Profile Settings first (Firefighter or Driver).</p>

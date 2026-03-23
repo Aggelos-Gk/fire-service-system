@@ -40,6 +40,7 @@ function wrapTileX(x, zoom) {
 
 function markerColor(type) {
   if (type === "user") return "#c9c9c9";
+  if (type === "nearby-incident") return "#d54444";
   if (type === "incident") return "#a8a8a8";
   return "#8f8f8f";
 }

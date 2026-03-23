@@ -18,7 +18,7 @@ public class Incident {
     @Column(nullable = false)
     private String title;
 
-    @Column(columnDefinition = "CLOB")
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @Column(nullable = false)

@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/incidents")
-@CrossOrigin(origins = "http://localhost:3000")
 public class IncidentController {
 
     private final IncidentRepository incidentRepository;
@@ -264,15 +264,19 @@ public class IncidentController {
         IncidentMessage message = new IncidentMessage();
         message.setIncidentId(incident.getId());
         message.setSenderId(creator.getId());
-        message.setTitle("Incident Request");
+        message.setReceiverId(admin.get().getId());
+        message.setTitle("Incident Request " + incident.getIncidentCode());
         message.setContent(creator.getUsername() + " submitted " + incident.getIncidentCode() + " for approval.");
-        message.setMessageType("admin");
+        message.setMessageType("private");
         message.setPriority("normal");
         messageRepository.save(message);
     }
 
     private void sendIncidentDecisionNotification(Incident incident, User admin, String decisionStatus) {
         if (incident.getCreatedBy() == null) {
+            return;
+        }
+        if (Objects.equals(incident.getCreatedBy(), admin.getId())) {
             return;
         }
         if (decisionStatus == null || decisionStatus.isBlank()) {
@@ -282,9 +286,10 @@ public class IncidentController {
         IncidentMessage message = new IncidentMessage();
         message.setIncidentId(incident.getId());
         message.setSenderId(admin.getId());
+        message.setReceiverId(incident.getCreatedBy());
         message.setTitle("Incident " + decisionStatus.substring(0, 1).toUpperCase(Locale.ROOT) + decisionStatus.substring(1));
-        message.setContent("Incident " + incident.getIncidentCode() + " was marked as " + decisionStatus + " by admin.");
-        message.setMessageType("public");
+        message.setContent("Your incident " + incident.getIncidentCode() + " was marked as " + decisionStatus + " by admin.");
+        message.setMessageType("private");
         message.setPriority("normal");
         messageRepository.save(message);
     }

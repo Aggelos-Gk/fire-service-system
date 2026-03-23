@@ -3,7 +3,8 @@
 }
 
 .inline-error,
-.inline-loading {
+.inline-loading,
+.inline-success {
   margin-bottom: 1rem;
   padding: 0.8rem 1rem;
   border-radius: 8px;
@@ -20,6 +21,12 @@
   background: rgba(100, 181, 246, 0.12);
   border: 1px solid rgba(100, 181, 246, 0.3);
   color: #bcdfff;
+}
+
+.inline-success {
+  background: rgba(76, 175, 80, 0.14);
+  border: 1px solid rgba(95, 189, 99, 0.38);
+  color: #c9f5cc;
 }
 
 .content-header {

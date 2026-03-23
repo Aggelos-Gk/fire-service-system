@@ -78,7 +78,42 @@
   -webkit-text-fill-color: #ffffff !important;
 }
 
+.dashboard-container .home-summary-title {
+  color: #adadad !important;
+  -webkit-text-fill-color: #adadad !important;
+}
+
+.dashboard-container .home-summary-primary {
+  color: #f2f2f2 !important;
+  -webkit-text-fill-color: #f2f2f2 !important;
+}
+
+.dashboard-container .home-summary-secondary {
+  color: #9f9f9f !important;
+  -webkit-text-fill-color: #9f9f9f !important;
+}
+
+.dashboard-container .home-summary-badge {
+  color: #e0e0e0 !important;
+  -webkit-text-fill-color: #e0e0e0 !important;
+  background: #202020 !important;
+  border: 1px solid #3b3b3b !important;
+}
+
+.dashboard-container .home-range-switch .home-range-btn {
+  background: #1a1a1a !important;
+  border: 1px solid #303030 !important;
+  color: #d8d8d8 !important;
+}
+
+.dashboard-container .home-range-switch .home-range-btn:hover {
+  background: #222222 !important;
+  border-color: #3b3b3b !important;
+}
+
 .dashboard-container .home-range-switch button.active {
+  background: #2c2c2c !important;
+  border-color: #444444 !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
@@ -168,7 +203,7 @@
   color: #f0f0f0 !important;
 }
 
-.dashboard-container button:not(.sidebar-item):not(.brand-button):not(.sidebar-user-main):not(.sidebar-user-menu-btn):not(.sidebar-login-btn):not(.quick-create-button):not(.sidebar-toggle-button) {
+.dashboard-container button:not(.sidebar-item):not(.brand-button):not(.sidebar-user-main):not(.sidebar-user-menu-btn):not(.sidebar-login-btn):not(.quick-create-button):not(.sidebar-toggle-button):not(.home-range-btn) {
   background: #1a1a1a !important;
   border: 1px solid #343434 !important;
   color: #efefef !important;
@@ -176,7 +211,7 @@
   transform: none !important;
 }
 
-.dashboard-container button:not(.sidebar-item):not(.brand-button):not(.sidebar-user-main):not(.sidebar-user-menu-btn):not(.sidebar-login-btn):not(.quick-create-button):not(.sidebar-toggle-button):hover {
+.dashboard-container button:not(.sidebar-item):not(.brand-button):not(.sidebar-user-main):not(.sidebar-user-menu-btn):not(.sidebar-login-btn):not(.quick-create-button):not(.sidebar-toggle-button):not(.home-range-btn):hover {
   background: #232323 !important;
   border-color: #444444 !important;
 }
@@ -349,11 +384,15 @@
 }
 
 .dashboard-container .chart-line.line-main {
-  stroke: #8fc2ff !important;
+  stroke: #94c4ff !important;
 }
 
 .dashboard-container .chart-line.line-secondary {
-  stroke: #2f86ff !important;
+  stroke: #3d8bff !important;
+}
+
+.dashboard-container .chart-grid line {
+  stroke: rgba(70, 85, 110, 0.24) !important;
 }
 
 .dashboard-container .messages-list,

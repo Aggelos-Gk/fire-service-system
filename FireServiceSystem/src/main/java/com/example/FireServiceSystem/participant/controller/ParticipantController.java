@@ -16,6 +16,7 @@ import com.example.FireServiceSystem.user.entity.UserRole;
 import com.example.FireServiceSystem.user.repository.UserRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -26,7 +27,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/participants")
-@CrossOrigin(origins = "http://localhost:3000")
 public class ParticipantController {
 
     private final ParticipantRepository participantRepository;
@@ -47,18 +47,35 @@ public class ParticipantController {
     }
 
     @GetMapping
-    public List<ParticipantResponse> getParticipants(@RequestParam(required = false) Long incidentId) {
-        List<Participant> participants = (incidentId == null)
-                ? participantRepository.findAll(Sort.by(Sort.Direction.DESC, "joinedAt"))
-                : participantRepository.findByIncidentIdOrderByJoinedAtDesc(incidentId);
+    public List<ParticipantResponse> getParticipants(
+            @RequestParam(required = false) Long incidentId,
+            @RequestParam(required = false) Long userId
+    ) {
+        List<Participant> participants;
+        if (incidentId != null && userId != null) {
+            participants = participantRepository.findByIncidentIdAndUserIdOrderByJoinedAtDesc(incidentId, userId);
+        } else if (incidentId != null) {
+            participants = participantRepository.findByIncidentIdOrderByJoinedAtDesc(incidentId);
+        } else if (userId != null) {
+            participants = participantRepository.findByUserIdOrderByJoinedAtDesc(userId);
+        } else {
+            participants = participantRepository.findAll(Sort.by(Sort.Direction.DESC, "joinedAt"));
+        }
 
-        return participants.stream().map(this::toResponse).toList();
+        return participants.stream()
+                .filter(participant -> normalizeParticipantRole(participant.getRole()) != null)
+                .map(this::toResponse)
+                .toList();
     }
 
     @PostMapping
     public ResponseEntity<?> addParticipant(@RequestBody ParticipantUpsertRequest request) {
         if (request.getIncidentId() == null || request.getUserId() == null) {
             return ResponseEntity.badRequest().body(Map.of("message", "incidentId and userId are required"));
+        }
+        String normalizedRole = normalizeParticipantRole(request.getRole());
+        if (normalizedRole == null) {
+            return ResponseEntity.badRequest().body(Map.of("message", "role must be Firefighter or Driver"));
         }
         if (!incidentRepository.existsById(request.getIncidentId())) {
             return ResponseEntity.badRequest().body(Map.of("message", "incident does not exist"));
@@ -73,7 +90,7 @@ public class ParticipantController {
         Participant participant = new Participant();
         participant.setIncidentId(request.getIncidentId());
         participant.setUserId(request.getUserId());
-        participant.setRole(request.getRole());
+        participant.setRole(normalizedRole);
 
         Participant saved = participantRepository.save(participant);
         return ResponseEntity.ok(toResponse(saved));
@@ -88,7 +105,11 @@ public class ParticipantController {
 
         Participant participant = existing.get();
         if (request.getRole() != null && !request.getRole().isBlank()) {
-            participant.setRole(request.getRole().trim());
+            String normalizedRole = normalizeParticipantRole(request.getRole());
+            if (normalizedRole == null) {
+                return ResponseEntity.badRequest().body(Map.of("message", "role must be Firefighter or Driver"));
+            }
+            participant.setRole(normalizedRole);
         }
 
         Participant saved = participantRepository.save(participant);
@@ -191,6 +212,7 @@ public class ParticipantController {
     }
 
     @PutMapping("/requests/{requestId}/decision")
+    @Transactional
     public ResponseEntity<?> decideParticipationRequest(
             @PathVariable Long requestId,
             @RequestBody ParticipantRequestDecisionDto decisionDto
@@ -218,13 +240,10 @@ public class ParticipantController {
             return ResponseEntity.badRequest().body(Map.of("message", "status must be approved or rejected"));
         }
 
-        request.setStatus(status);
-        request.setDecidedBy(decisionDto.getDecidedBy());
-        request.setDecidedAt(LocalDateTime.now());
-        ParticipantRequest savedRequest = participantRequestRepository.save(request);
+        boolean shouldCreateParticipant = status.equals("approved")
+                && !participantRepository.existsByIncidentIdAndUserId(request.getIncidentId(), request.getUserId());
 
-        if (status.equals("approved")
-                && !participantRepository.existsByIncidentIdAndUserId(request.getIncidentId(), request.getUserId())) {
+        if (shouldCreateParticipant) {
             Optional<Incident> incident = incidentRepository.findById(request.getIncidentId());
             if (incident.isEmpty()) {
                 return ResponseEntity.badRequest().body(Map.of("message", "incident does not exist"));
@@ -239,7 +258,15 @@ public class ParticipantController {
             if (neededSlots <= 0 || filledSlots >= neededSlots) {
                 return ResponseEntity.badRequest().body(Map.of("message", "no open " + requestedRole + " slots left"));
             }
+        }
 
+        request.setStatus(status);
+        request.setDecidedBy(decisionDto.getDecidedBy());
+        request.setDecidedAt(LocalDateTime.now());
+        ParticipantRequest savedRequest = participantRequestRepository.save(request);
+
+        if (shouldCreateParticipant) {
+            String requestedRole = normalizeVolunteerRole(request.getRequestedRole());
             Participant participant = new Participant();
             participant.setIncidentId(request.getIncidentId());
             participant.setUserId(request.getUserId());
@@ -255,7 +282,7 @@ public class ParticipantController {
         response.setId(participant.getId());
         response.setIncidentId(participant.getIncidentId());
         response.setUserId(participant.getUserId());
-        response.setRole(participant.getRole());
+        response.setRole(normalizeParticipantRole(participant.getRole()));
         response.setJoinedAt(participant.getJoinedAt());
 
         userRepository.findById(participant.getUserId()).ifPresent(user -> {
@@ -311,6 +338,20 @@ public class ParticipantController {
             return "Driver";
         }
         return "Firefighter";
+    }
+
+    private String normalizeParticipantRole(String value) {
+        if (value == null || value.isBlank()) {
+            return null;
+        }
+        String normalized = value.trim().toUpperCase(Locale.ROOT);
+        if ("DRIVER".equals(normalized)) {
+            return "Driver";
+        }
+        if ("FIREFIGHTER".equals(normalized)) {
+            return "Firefighter";
+        }
+        return null;
     }
 
 }

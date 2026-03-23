@@ -22,8 +22,8 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/notifications")
-@CrossOrigin(origins = "http://localhost:3000")
 public class NotificationController {
+    private static final int NOTIFICATION_ID_MAX_LENGTH = 120;
 
     private final IncidentRepository incidentRepository;
     private final IncidentMessageRepository messageRepository;
@@ -48,19 +48,19 @@ public class NotificationController {
     @GetMapping
     public ResponseEntity<?> getNotifications(
             @RequestParam Long viewerId,
-            @RequestParam(required = false) String viewerRole,
             @RequestParam(required = false, defaultValue = "false") boolean includeRead,
             @RequestParam(required = false, defaultValue = "50") Integer limit
     ) {
-        if (!userRepository.existsById(viewerId)) {
+        Optional<User> viewer = userRepository.findById(viewerId);
+        if (viewer.isEmpty()) {
             return ResponseEntity.badRequest().body(Map.of("message", "viewerId user does not exist"));
         }
 
         int safeLimit = Math.max(1, Math.min(limit == null ? 50 : limit, 200));
-        boolean adminViewer = isAdminRole(viewerRole);
+        boolean adminViewer = viewer.get().getUserType() == UserRole.ADMIN;
 
         List<NotificationResponse> notifications = new ArrayList<>();
-        appendIncidentNotifications(notifications, adminViewer);
+        appendIncidentNotifications(notifications, viewerId, adminViewer);
         appendMessageNotifications(notifications, viewerId);
         appendParticipantRequestNotifications(notifications, viewerId, adminViewer);
 
@@ -79,8 +79,17 @@ public class NotificationController {
         return ResponseEntity.ok(filtered);
     }
 
+    @PostMapping("/dismiss")
+    public ResponseEntity<?> dismissNotifications(@RequestBody NotificationReadRequest request) {
+        return persistNotificationDismissals(request);
+    }
+
     @PutMapping("/read")
     public ResponseEntity<?> markAsRead(@RequestBody NotificationReadRequest request) {
+        return persistNotificationDismissals(request);
+    }
+
+    private ResponseEntity<?> persistNotificationDismissals(NotificationReadRequest request) {
         if (request.getViewerId() == null) {
             return ResponseEntity.badRequest().body(Map.of("message", "viewerId is required"));
         }
@@ -95,42 +104,37 @@ public class NotificationController {
                 .filter(Objects::nonNull)
                 .map(String::trim)
                 .filter(id -> !id.isBlank())
+                .map(id -> id.length() > NOTIFICATION_ID_MAX_LENGTH ? id.substring(0, NOTIFICATION_ID_MAX_LENGTH) : id)
                 .distinct()
                 .toList();
         if (normalizedIds.isEmpty()) {
             return ResponseEntity.badRequest().body(Map.of("message", "notificationIds is required"));
         }
 
-        Set<String> existing = notificationReadRepository
-                .findByUserIdAndNotificationIdIn(request.getViewerId(), normalizedIds)
-                .stream()
-                .map(NotificationRead::getNotificationId)
-                .collect(HashSet::new, HashSet::add, HashSet::addAll);
-
-        List<NotificationRead> toInsert = new ArrayList<>();
+        int insertedCount = 0;
+        int skippedCount = 0;
         for (String notificationId : normalizedIds) {
-            if (existing.contains(notificationId)) {
-                continue;
+            int inserted = notificationReadRepository.insertIgnore(request.getViewerId(), notificationId);
+            if (inserted > 0) {
+                insertedCount += inserted;
+            } else {
+                skippedCount++;
             }
-            NotificationRead item = new NotificationRead();
-            item.setUserId(request.getViewerId());
-            item.setNotificationId(notificationId);
-            toInsert.add(item);
-        }
-
-        if (!toInsert.isEmpty()) {
-            notificationReadRepository.saveAll(toInsert);
         }
 
         return ResponseEntity.ok(Map.of(
-                "message", "notifications marked as read",
-                "count", toInsert.size()
+                "message", "notifications dismissed",
+                "count", insertedCount,
+                "skipped", skippedCount
         ));
     }
 
-    private void appendIncidentNotifications(List<NotificationResponse> target, boolean adminViewer) {
+    private void appendIncidentNotifications(List<NotificationResponse> target, Long viewerId, boolean adminViewer) {
         List<Incident> incidents = incidentRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
         for (Incident incident : incidents) {
+            if (viewerId != null && Objects.equals(incident.getCreatedBy(), viewerId)) {
+                continue;
+            }
             if (!adminViewer && isRequestedStatus(incident.getStatus())) {
                 continue;
             }
@@ -150,7 +154,7 @@ public class NotificationController {
     private void appendMessageNotifications(List<NotificationResponse> target, Long viewerId) {
         List<IncidentMessage> messages = messageRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt"));
         for (IncidentMessage message : messages) {
-            if (!isMessageVisibleToViewer(message, viewerId)) {
+            if (!isMessageNotificationForViewer(message, viewerId)) {
                 continue;
             }
 
@@ -195,16 +199,16 @@ public class NotificationController {
         }
     }
 
-    private boolean isMessageVisibleToViewer(IncidentMessage message, Long viewerId) {
-        String messageType = normalizeMessageType(message.getMessageType());
-        if (messageType.equals("public")) {
-            return true;
-        }
+    private boolean isMessageNotificationForViewer(IncidentMessage message, Long viewerId) {
         if (viewerId == null) {
             return false;
         }
+        String messageType = normalizeMessageType(message.getMessageType());
+        if (messageType.equals("public")) {
+            return !Objects.equals(message.getSenderId(), viewerId);
+        }
         if (messageType.equals("private")) {
-            return Objects.equals(message.getReceiverId(), viewerId) || Objects.equals(message.getSenderId(), viewerId);
+            return Objects.equals(message.getReceiverId(), viewerId);
         }
         return false;
     }
@@ -235,7 +239,4 @@ public class NotificationController {
         return status != null && status.trim().equalsIgnoreCase("requested");
     }
 
-    private boolean isAdminRole(String role) {
-        return role != null && role.trim().equalsIgnoreCase(UserRole.ADMIN.name());
-    }
 }
