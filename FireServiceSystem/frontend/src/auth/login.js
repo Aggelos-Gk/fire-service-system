@@ -6,7 +6,6 @@ import { normalizeRole } from "../utils/session";
 
 function Login() {
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     password: ""
@@ -73,7 +72,7 @@ function Login() {
         setErrors({ general: data.message || "Login failed" });
       }
     } catch (error) {
-      console.error('Login error:', error);
+      console.error("Login error:", error);
       setErrors({ general: "Cannot connect to server. Please check your connection." });
     } finally {
       setIsLoading(false);
@@ -85,100 +84,77 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <div className="login-header">
-          <div className="logo">
-            <div className="fire-icon">🔥</div>
-            <div className="logo-text">
-              <h1>FIRE SERVICE</h1>
-              <p className="system-tag">Emergency Response Portal</p>
-            </div>
-          </div>
+    <div className="auth-page">
+      <div className="auth-card">
+        <div className="auth-header">
+          <h1>Login to your account</h1>
+          <p>Enter your username below to login to your account</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="login-form">
-          <div className="form-section">
-            <div className="input-group">
-              <label>Username</label>
-              <div className="input-field">
-                <input
-                  type="text"
-                  value={formData.username}
-                  onChange={(e) => {
-                    setFormData({...formData, username: e.target.value});
-                    if (errors.username) setErrors({...errors, username: ""});
-                  }}
-                  placeholder="Enter your username"
-                  className={errors.username ? "error" : ""}
-                  disabled={isLoading}
-                />
-              </div>
-              {errors.username && <span className="error-text">{errors.username}</span>}
+        <form onSubmit={handleSubmit} className="auth-form">
+          <div className="input-group">
+            <label htmlFor="login-username">Username</label>
+            <div className="input-field">
+              <input
+                id="login-username"
+                type="text"
+                value={formData.username}
+                onChange={(e) => {
+                  setFormData({ ...formData, username: e.target.value });
+                  if (errors.username) setErrors({ ...errors, username: "" });
+                }}
+                placeholder="username"
+                className={errors.username ? "error" : ""}
+                disabled={isLoading}
+              />
             </div>
-
-            <div className="input-group">
-              <label>Password</label>
-              <div className="input-field">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  value={formData.password}
-                  onChange={(e) => {
-                    setFormData({...formData, password: e.target.value});
-                    if (errors.password) setErrors({...errors, password: ""});
-                  }}
-                  placeholder="Enter your password"
-                  className={errors.password ? "error" : ""}
-                  disabled={isLoading}
-                />
-                <button
-                  type="button"
-                  className="toggle-password"
-                  onClick={() => setShowPassword(!showPassword)}
-                  tabIndex="-1"
-                >
-                  {showPassword ? "HIDE" : "SHOW"}
-                </button>
-              </div>
-              {errors.password && <span className="error-text">{errors.password}</span>}
-            </div>
+            {errors.username && <span className="error-text">{errors.username}</span>}
           </div>
 
-          {errors.general && (
-            <div className="error-message">
-              <span>⚠️</span>
-              <span>{errors.general}</span>
+          <div className="input-group">
+            <label htmlFor="login-password">Password</label>
+            <div className="input-field">
+              <input
+                id="login-password"
+                type="password"
+                value={formData.password}
+                onChange={(e) => {
+                  setFormData({ ...formData, password: e.target.value });
+                  if (errors.password) setErrors({ ...errors, password: "" });
+                }}
+                placeholder="Password"
+                className={errors.password ? "error" : ""}
+                disabled={isLoading}
+              />
             </div>
-          )}
+            {errors.password && <span className="error-text">{errors.password}</span>}
+          </div>
 
-          <button
-            type="submit"
-            className="submit-btn"
-            disabled={isLoading}
-          >
+          {errors.general && <div className="error-message">{errors.general}</div>}
+
+          <button type="submit" className="submit-btn" disabled={isLoading}>
             {isLoading ? (
               <div className="loading">
-                <div className="spinner"></div>
-                <span>Authenticating...</span>
+                <div className="spinner" />
+                <span>Login...</span>
               </div>
             ) : (
-              "SIGN IN"
+              "Login"
             )}
           </button>
 
           <div className="register-option">
-            <span>Don't have an account yet?</span>
+            <span>Don't have an account?</span>
             <button
               type="button"
               className="register-btn"
               onClick={handleRegisterClick}
               disabled={isLoading}
             >
-              Request Access
+              Sign up
             </button>
           </div>
         </form>
-
       </div>
     </div>
   );

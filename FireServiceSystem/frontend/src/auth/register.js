@@ -136,13 +136,8 @@ function Register() {
     <div className="register-container">
       <div className="register-card">
         <div className="register-header">
-          <div className="logo">
-            <div className="fire-icon">🔥</div>
-            <div className="logo-text">
-              <h1>FIRE SERVICE</h1>
-              <p className="system-tag">Create Account</p>
-            </div>
-          </div>
+          <h1>Create your account</h1>
+          <p>Fill in your details below to register your account</p>
         </div>
 
         <form onSubmit={handleSubmit} className="register-form">
@@ -477,7 +472,7 @@ function Register() {
           <div className="login-option">
             <span>Already have an account?</span>
             <Link to="/login" className="login-link">
-              Sign In
+              Login
             </Link>
           </div>
         </form>
