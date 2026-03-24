@@ -41,7 +41,7 @@ Use two Railway services from the same GitHub repo:
 ### Backend service settings
 
 - Build command: `mvn -DskipTests clean package`
-- Start command: `java -Dserver.port=$PORT -jar target/FireServiceSystem-0.0.1-SNAPSHOT.jar`
+- Start command: `./start-backend.sh`
 - Required env vars:
   - `SUPABASE_DB_JDBC_URL`
   - `SUPABASE_DB_USER=postgres`
