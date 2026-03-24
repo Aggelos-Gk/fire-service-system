@@ -255,6 +255,20 @@
   color: #ffffff;
 }
 
+@media (max-width: 1024px) {
+  .register-container {
+    padding: 18px;
+  }
+
+  .register-card {
+    max-width: 500px;
+  }
+
+  .register-form {
+    max-height: calc(90vh - 130px);
+  }
+}
+
 @media (max-width: 640px) {
   .register-card {
     padding: 20px 18px;

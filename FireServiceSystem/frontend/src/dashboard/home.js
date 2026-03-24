@@ -339,24 +339,26 @@ function Home() {
     });
 
     const maxCount = Math.max(1, ...incidentSeries, ...messageSeries);
-    const chartWidth = 1000;
-    const chartHeight = 300;
+    const daySlot = rangeDays <= 7 ? 72 : rangeDays <= 30 ? 36 : 13;
     const padLeft = 6;
     const padRight = 6;
+    const minChartWidth = rangeDays <= 7 ? 520 : rangeDays <= 30 ? 1000 : 1120;
+    const chartWidth = Math.max(minChartWidth, padLeft + padRight + (rangeDays - 1) * daySlot);
+    const chartHeight = 300;
     const padTop = 18;
     const padBottom = 24;
     const drawableWidth = chartWidth - padLeft - padRight;
     const drawableHeight = chartHeight - padTop - padBottom;
     const baselineY = chartHeight - padBottom;
 
-    const toPoints = (series) => {
-      if (series.length === 1) {
-        const y = baselineY - (series[0] / maxCount) * drawableHeight;
-        return [{ x: padLeft + drawableWidth / 2, y }];
-      }
+    const toX = (index) => {
+      if (labels.length <= 1) return padLeft + drawableWidth / 2;
+      return padLeft + (index / (labels.length - 1)) * drawableWidth;
+    };
 
+    const toPoints = (series) => {
       return series.map((value, index) => {
-        const x = padLeft + (index / (series.length - 1)) * drawableWidth;
+        const x = toX(index);
         const y = baselineY - (value / maxCount) * drawableHeight;
         return { x, y };
       });
@@ -365,10 +367,17 @@ function Home() {
     const incidentPoints = toPoints(incidentSeries);
     const messagePoints = toPoints(messageSeries);
 
-    const tickInterval = rangeDays <= 10 ? 1 : rangeDays <= 31 ? 2 : Math.max(2, Math.round(rangeDays / 14));
-    const tickLabels = labels
-      .map((label, index) => ({ label, index }))
-      .filter((item) => item.index % tickInterval === 0 || item.index === labels.length - 1);
+    const tickStep = rangeDays <= 7 ? 1 : rangeDays <= 30 ? 2 : 7;
+    const tickIndices = [];
+    for (let index = labels.length - 1; index >= 0; index -= tickStep) {
+      tickIndices.push(index);
+    }
+    tickIndices.sort((a, b) => a - b);
+
+    const tickLabels = tickIndices.map((index) => ({
+      label: labels[index],
+      index
+    }));
     const gridLines = Array.from({ length: 4 }, (_, index) => {
       const ratio = (index + 1) / 4;
       return baselineY - ratio * drawableHeight;
@@ -376,7 +385,11 @@ function Home() {
 
     return {
       labels,
-      tickLabels,
+      tickLabels: tickLabels.map((item) => ({
+        ...item,
+        x: toX(item.index),
+        xPercent: (toX(item.index) / chartWidth) * 100
+      })),
       incidentLinePath: toRoundedLinePath(incidentPoints),
       incidentAreaPath: toAreaPath(incidentPoints, baselineY),
       messageLinePath: toRoundedLinePath(messagePoints),
@@ -475,52 +488,63 @@ function Home() {
           </div>
 
           <div className="home-chart-shell">
-            {trend.incidentLinePath ? (
-              <svg
-                className="home-trend-chart"
-                viewBox={`0 0 ${trend.chartWidth} ${trend.chartHeight}`}
-                role="img"
-                aria-label="Dashboard activity chart"
-              >
-                <defs>
-                  <linearGradient id="incident-fill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="rgba(101, 165, 255, 0.38)" />
-                    <stop offset="55%" stopColor="rgba(66, 128, 224, 0.2)" />
-                    <stop offset="100%" stopColor="rgba(26, 39, 63, 0)" />
-                  </linearGradient>
-                  <linearGradient id="message-fill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="rgba(145, 199, 255, 0.3)" />
-                    <stop offset="55%" stopColor="rgba(76, 137, 231, 0.14)" />
-                    <stop offset="100%" stopColor="rgba(22, 36, 59, 0)" />
-                  </linearGradient>
-                </defs>
+            <div className="home-chart-scroll">
+              <div className="home-chart-canvas" style={{ width: `${trend.chartWidth}px` }}>
+                {trend.incidentLinePath ? (
+                  <>
+                    <svg
+                      className="home-trend-chart"
+                      viewBox={`0 0 ${trend.chartWidth} ${trend.chartHeight}`}
+                      role="img"
+                      aria-label="Dashboard activity chart"
+                    >
+                      <defs>
+                        <linearGradient id="incident-fill" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="rgba(101, 165, 255, 0.38)" />
+                          <stop offset="55%" stopColor="rgba(66, 128, 224, 0.2)" />
+                          <stop offset="100%" stopColor="rgba(26, 39, 63, 0)" />
+                        </linearGradient>
+                        <linearGradient id="message-fill" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="rgba(145, 199, 255, 0.3)" />
+                          <stop offset="55%" stopColor="rgba(76, 137, 231, 0.14)" />
+                          <stop offset="100%" stopColor="rgba(22, 36, 59, 0)" />
+                        </linearGradient>
+                      </defs>
 
-                <g className="chart-grid">
-                  {trend.gridLines.map((y) => (
-                    <line
-                      key={y}
-                      x1={trend.padLeft}
-                      y1={y}
-                      x2={trend.chartWidth - trend.padRight}
-                      y2={y}
-                    />
-                  ))}
-                </g>
+                      <g className="chart-grid">
+                        {trend.gridLines.map((y) => (
+                          <line
+                            key={y}
+                            x1={trend.padLeft}
+                            y1={y}
+                            x2={trend.chartWidth - trend.padRight}
+                            y2={y}
+                          />
+                        ))}
+                      </g>
 
-                <path className="chart-area area-secondary" d={trend.messageAreaPath} fill="url(#message-fill)" />
-                <path className="chart-area" d={trend.incidentAreaPath} fill="url(#incident-fill)" />
-                <path className="chart-line line-main" d={trend.incidentLinePath} />
-                <path className="chart-line line-secondary" d={trend.messageLinePath} />
-              </svg>
-            ) : (
-              <div className="home-chart-empty">No activity data for the selected period.</div>
-            )}
-          </div>
+                      <path className="chart-area area-secondary" d={trend.messageAreaPath} fill="url(#message-fill)" />
+                      <path className="chart-area" d={trend.incidentAreaPath} fill="url(#incident-fill)" />
+                      <path className="chart-line line-main" d={trend.incidentLinePath} />
+                      <path className="chart-line line-secondary" d={trend.messageLinePath} />
+                    </svg>
 
-          <div className="home-chart-axis">
-            {trend.tickLabels.map((item) => (
-              <span key={`${item.label}-${item.index}`}>{item.label}</span>
-            ))}
+                    <div className="home-chart-axis">
+                      {trend.tickLabels.map((item) => (
+                        <span
+                          key={`${item.label}-${item.index}`}
+                          style={{ left: `${item.xPercent}%` }}
+                        >
+                          {item.label}
+                        </span>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <div className="home-chart-empty">No activity data for the selected period.</div>
+                )}
+              </div>
+            </div>
           </div>
         </section>
       )}

@@ -394,6 +394,22 @@
   font-size: 1.1rem;
 }
 
+@media (max-width: 1024px) {
+  .messages-controls {
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .search-bar {
+    min-width: 240px;
+    width: 100%;
+  }
+
+  .messages-list {
+    max-height: none;
+  }
+}
+
 @media (max-width: 768px) {
   .message-form-row.two-col,
   .message-form-row.three-col {

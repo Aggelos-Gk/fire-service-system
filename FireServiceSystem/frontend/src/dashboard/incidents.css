@@ -538,6 +538,22 @@
   color: #ff8888;
 }
 
+@media (max-width: 1024px) {
+  .incidents-controls {
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .search-bar {
+    min-width: 240px;
+    width: 100%;
+  }
+
+  .incidents-list {
+    max-height: none;
+  }
+}
+
 @media (max-width: 768px) {
   .incidents-controls {
     flex-direction: column;

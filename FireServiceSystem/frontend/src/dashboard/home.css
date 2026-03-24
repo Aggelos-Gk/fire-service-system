@@ -157,9 +157,41 @@
 
 .home-chart-shell {
   min-height: 340px;
-  padding: 6px 4px 0;
+  padding: 6px 4px 10px;
   border-radius: 14px;
   background: #151515;
+}
+
+.home-chart-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: #3f3f3f #1a1a1a;
+}
+
+.home-chart-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.home-chart-scroll::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 999px;
+}
+
+.home-chart-scroll::-webkit-scrollbar-thumb {
+  background: #3f3f3f;
+  border-radius: 999px;
+}
+
+.home-chart-scroll::-webkit-scrollbar-thumb:hover {
+  background: #565656;
+}
+
+.home-chart-canvas {
+  position: relative;
+  margin: 0 auto;
 }
 
 .home-trend-chart {
@@ -199,12 +231,17 @@
 }
 
 .home-chart-axis {
-  display: flex;
-  justify-content: space-between;
-  gap: 6px;
-  padding: 0 8px 14px;
+  position: relative;
+  height: 22px;
+  margin-top: 2px;
   color: #7988a0;
   font-size: 0.62rem;
+}
+
+.home-chart-axis span {
+  position: absolute;
+  transform: translateX(-50%);
+  white-space: nowrap;
 }
 
 .home-chart-empty {
@@ -532,7 +569,7 @@
   }
 
   .home-chart-shell {
-    min-height: 290px;
+    min-height: 300px;
   }
 
   .home-trend-chart {
@@ -544,13 +581,7 @@
   }
 
   .home-chart-axis {
-    overflow-x: auto;
-    justify-content: flex-start;
-  }
-
-  .home-chart-axis span {
-    min-width: 60px;
-    text-align: center;
+    font-size: 0.58rem;
   }
 
   .home-promo-grid {

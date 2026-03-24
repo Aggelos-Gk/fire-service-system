@@ -203,7 +203,7 @@
   color: #f0f0f0 !important;
 }
 
-.dashboard-container button:not(.sidebar-item):not(.brand-button):not(.sidebar-user-main):not(.sidebar-user-menu-btn):not(.sidebar-login-btn):not(.quick-create-button):not(.sidebar-toggle-button):not(.home-range-btn) {
+.dashboard-container button:not(.sidebar-item):not(.brand-button):not(.sidebar-user-main):not(.sidebar-user-menu-btn):not(.sidebar-login-btn):not(.quick-create-button):not(.sidebar-toggle-button):not(.home-range-btn):not(.sidebar-backdrop) {
   background: #1a1a1a !important;
   border: 1px solid #343434 !important;
   color: #efefef !important;
@@ -211,7 +211,7 @@
   transform: none !important;
 }
 
-.dashboard-container button:not(.sidebar-item):not(.brand-button):not(.sidebar-user-main):not(.sidebar-user-menu-btn):not(.sidebar-login-btn):not(.quick-create-button):not(.sidebar-toggle-button):not(.home-range-btn):hover {
+.dashboard-container button:not(.sidebar-item):not(.brand-button):not(.sidebar-user-main):not(.sidebar-user-menu-btn):not(.sidebar-login-btn):not(.quick-create-button):not(.sidebar-toggle-button):not(.home-range-btn):not(.sidebar-backdrop):hover {
   background: #232323 !important;
   border-color: #444444 !important;
 }

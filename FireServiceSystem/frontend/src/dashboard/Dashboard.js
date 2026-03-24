@@ -6,6 +6,8 @@ import { fetchJson } from "../utils/api";
 import { clearStoredSession, getStoredSession, isLoggedIn, normalizeRole } from "../utils/session";
 import { formatRelativeTime } from "../utils/time";
 
+const COMPACT_LAYOUT_BREAKPOINT = 1024;
+
 const ICONS = {
   home: [
     "M3 10.5L12 3l9 7.5",
@@ -50,6 +52,15 @@ const ICONS = {
   panelToggle: [
     "M4.5 6a1.5 1.5 0 0 1 1.5-1.5h12A1.5 1.5 0 0 1 19.5 6v12a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4.5 18Z",
     "M9.5 4.5v15"
+  ],
+  menu: [
+    "M4 6h16",
+    "M4 12h16",
+    "M4 18h16"
+  ],
+  close: [
+    "M6 6l12 12",
+    "M18 6L6 18"
   ],
   bell: [
     "M9.5 18h5",
@@ -99,6 +110,9 @@ function Dashboard() {
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isCompactLayout, setIsCompactLayout] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth <= COMPACT_LAYOUT_BREAKPOINT : false
+  );
 
   const loggedIn = isLoggedIn(session);
   const normalizedRole = normalizeRole(session.role) || "GUEST";
@@ -185,6 +199,40 @@ function Dashboard() {
   }, [loggedIn, normalizedRole, session.userId]);
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsCompactLayout(window.innerWidth <= COMPACT_LAYOUT_BREAKPOINT);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    setIsSidebarCollapsed(isCompactLayout);
+    setShowUserMenu(false);
+    setShowNotifications(false);
+  }, [isCompactLayout]);
+
+  useEffect(() => {
+    if (!isCompactLayout) return;
+    setIsSidebarCollapsed(true);
+  }, [isCompactLayout, location.pathname]);
+
+  useEffect(() => {
+    if (!isCompactLayout || isSidebarCollapsed) return undefined;
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setIsSidebarCollapsed(true);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [isCompactLayout, isSidebarCollapsed]);
+
+  useEffect(() => {
     const handleClickOutside = (event) => {
       if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
         setShowUserMenu(false);
@@ -234,6 +282,9 @@ function Dashboard() {
 
   const handleMenuClick = (menuId) => {
     setActiveMenu(menuId);
+    if (isCompactLayout) {
+      setIsSidebarCollapsed(true);
+    }
     navigate(`/dashboard/${menuId}`);
   };
 
@@ -269,9 +320,25 @@ function Dashboard() {
     return "Dashboard";
   })();
 
+  const toggleSidebarAriaLabel = isCompactLayout
+    ? isSidebarCollapsed
+      ? "Open menu"
+      : "Close menu"
+    : isSidebarCollapsed
+      ? "Expand sidebar"
+      : "Collapse sidebar";
+
   return (
     <div className="dashboard-container">
-      <div className={`dashboard-shell ${isSidebarCollapsed ? "sidebar-collapsed" : ""}`.trim()}>
+      <div className={`dashboard-shell ${isCompactLayout ? "compact-layout" : ""} ${isSidebarCollapsed ? "sidebar-collapsed" : ""}`.trim()}>
+        {isCompactLayout && !isSidebarCollapsed && (
+          <button
+            type="button"
+            className="sidebar-backdrop"
+            aria-label="Close menu"
+            onClick={() => setIsSidebarCollapsed(true)}
+          />
+        )}
         <aside className="dashboard-sidebar">
           <div className="sidebar-brand">
             <button className="brand-button" onClick={() => handleMenuClick("home")}>
@@ -285,6 +352,9 @@ function Dashboard() {
           <button
             className="quick-create-button"
             onClick={() => {
+              if (isCompactLayout) {
+                setIsSidebarCollapsed(true);
+              }
               if (!loggedIn) {
                 navigate("/login");
                 return;
@@ -319,13 +389,14 @@ function Dashboard() {
               <ul>
                 {secondaryMenu.map((item) => (
                   <li key={item.id}>
-                    <button
-                      className={`sidebar-item ${activeMenu === item.id ? "active" : ""}`}
-                      onClick={() => {
-                        if (item.id === "profile") setActiveMenu("profile");
-                        navigate(item.route);
-                      }}
-                    >
+                  <button
+                    className={`sidebar-item ${activeMenu === item.id ? "active" : ""}`}
+                    onClick={() => {
+                      if (item.id === "profile") setActiveMenu("profile");
+                      if (isCompactLayout) setIsSidebarCollapsed(true);
+                      navigate(item.route);
+                    }}
+                  >
                       <Icon name={item.icon} className="sidebar-item-icon" />
                       <span className="sidebar-label">{item.label}</span>
                     </button>
@@ -397,12 +468,12 @@ function Dashboard() {
             <div className="topbar-title">
               <button
                 type="button"
-                className={`sidebar-toggle-button ${isSidebarCollapsed ? "collapsed" : ""}`.trim()}
+              className={`sidebar-toggle-button ${isSidebarCollapsed ? "collapsed" : ""}`.trim()}
                 onClick={toggleSidebar}
-                aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+                aria-label={toggleSidebarAriaLabel}
                 aria-expanded={!isSidebarCollapsed}
               >
-                <Icon name="panelToggle" />
+                <Icon name={isCompactLayout ? (isSidebarCollapsed ? "menu" : "close") : "panelToggle"} />
               </button>
               <span className="topbar-divider" />
               <h1>{pageTitle}</h1>

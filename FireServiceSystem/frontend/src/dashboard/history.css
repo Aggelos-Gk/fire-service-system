@@ -246,6 +246,20 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .history-table-container {
+    overflow-x: auto;
+  }
+
+  .history-table {
+    min-width: 860px;
+  }
+
+  .history-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .date-range-selector {
     width: 100%;
@@ -266,7 +280,7 @@
   }
 
   .history-table {
-    min-width: 900px;
+    min-width: 760px;
   }
 
   .history-filters {

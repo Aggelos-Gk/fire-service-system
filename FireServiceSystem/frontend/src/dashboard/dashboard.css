@@ -67,6 +67,10 @@
     column-gap 340ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.sidebar-backdrop {
+  display: none;
+}
+
 .dashboard-shell.sidebar-collapsed {
   --sidebar-width: 0px;
   --shell-gap: 0px;
@@ -403,6 +407,10 @@
 
 .sidebar-toggle-button.collapsed {
   transform: rotate(-180deg);
+}
+
+.dashboard-shell.compact-layout .sidebar-toggle-button.collapsed {
+  transform: none;
 }
 
 .topbar-divider {
@@ -766,67 +774,149 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .dashboard-container {
+    padding: 12px;
+  }
+
+  .dashboard-shell.compact-layout {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    position: relative;
+    isolation: isolate;
+  }
+
+  .dashboard-shell.compact-layout .dashboard-main {
+    border-radius: 14px;
+    grid-template-rows: 54px minmax(0, 1fr);
+  }
+
+  .dashboard-shell.compact-layout .dashboard-topbar {
+    padding: 0 14px;
+  }
+
+  .dashboard-shell.compact-layout .topbar-title h1 {
+    font-size: 1.24rem;
+  }
+
+  .dashboard-shell.compact-layout .dashboard-content {
+    padding: 16px;
+  }
+
+  .dashboard-shell.compact-layout .dashboard-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: min(82vw, 320px);
+    max-width: 320px;
+    padding: 16px 12px;
+    border-right: 1px solid var(--line);
+    background: #151515;
+    overflow-y: auto;
+    z-index: 120;
+    transition:
+      transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 240ms ease;
+  }
+
+  .dashboard-shell.compact-layout.sidebar-collapsed .dashboard-sidebar {
+    transform: translateX(-104%);
+    opacity: 0.98;
+    pointer-events: none;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .dashboard-shell.compact-layout .sidebar-nav ul {
+    display: grid;
+    gap: 4px;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .dashboard-shell.compact-layout .sidebar-item {
+    border: 1px solid transparent;
+    min-height: 40px;
+  }
+
+  .dashboard-shell.compact-layout .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    border: none;
+    background: rgba(0, 0, 0, 0.52);
+    cursor: pointer;
+  }
+
+  .dashboard-shell.compact-layout .notifications-dropdown {
+    width: min(360px, calc(100vw - 24px));
+  }
+
+  .dashboard-shell.compact-layout .user-dropdown {
+    max-width: min(270px, calc(100vw - 24px));
+  }
+
+  .incidents-list,
+  .messages-list,
+  .users-list,
+  .participants-grid,
+  .history-table-container,
+  .home-list-body,
+  .request-board {
+    max-height: none;
+  }
+
+  .history-table-container {
+    overflow-x: auto;
+  }
+
+  .participants-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  .users-search-input {
+    max-width: 100%;
+  }
+}
+
 @media (max-width: 760px) {
   .dashboard-container {
     padding: 0;
   }
 
-  .dashboard-shell {
-    border-radius: 0;
-    border: none;
-    grid-template-columns: 1fr;
-    column-gap: 0;
+  .dashboard-shell.compact-layout {
     height: 100vh;
   }
 
-  .dashboard-sidebar {
-    border-bottom: 1px solid var(--line);
-    padding: 10px;
-    max-height: 44vh;
-    transition:
-      opacity 220ms ease,
-      transform 260ms ease,
-      max-height 260ms ease,
-      padding 260ms ease,
-      border-color 260ms ease;
-  }
-
-  .dashboard-shell.sidebar-collapsed .dashboard-sidebar {
-    transform: translateY(-10px);
-    max-height: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    border-bottom-color: transparent;
-  }
-
-  .sidebar-nav ul {
-    display: flex;
-    overflow-x: auto;
-    gap: 6px;
-    padding-bottom: 4px;
-  }
-
-  .sidebar-item {
-    flex-shrink: 0;
-    border: 1px solid var(--line);
-    min-height: 36px;
-    padding: 0 11px;
-  }
-
-  .dashboard-main {
+  .dashboard-shell.compact-layout .dashboard-main {
+    border-radius: 0;
     grid-template-rows: 52px minmax(0, 1fr);
   }
 
-  .dashboard-topbar {
+  .dashboard-shell.compact-layout .dashboard-sidebar {
+    width: min(88vw, 300px);
+  }
+
+  .dashboard-shell.compact-layout .dashboard-topbar {
     padding: 0 12px;
   }
 
-  .topbar-title h1 {
-    font-size: 1.22rem;
+  .dashboard-shell.compact-layout .sidebar-toggle-button {
+    margin-right: 8px;
   }
 
-  .dashboard-content {
-    padding: 14px;
+  .dashboard-shell.compact-layout .topbar-divider {
+    display: none;
+  }
+
+  .dashboard-shell.compact-layout .topbar-title h1 {
+    font-size: 1.06rem;
+  }
+
+  .dashboard-shell.compact-layout .dashboard-content {
+    padding: 12px;
   }
 
   .stats-container {

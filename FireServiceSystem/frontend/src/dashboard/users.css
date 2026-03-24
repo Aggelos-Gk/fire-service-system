@@ -124,3 +124,28 @@
   color: #94a3b8;
   padding: 1rem 0;
 }
+
+@media (max-width: 1024px) {
+  .users-list {
+    max-height: none;
+  }
+
+  .users-search-input {
+    max-width: 100%;
+  }
+
+  .user-meta {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .user-card {
+    align-items: flex-start;
+  }
+
+  .user-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

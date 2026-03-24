@@ -476,6 +476,22 @@
   font-size: 1.1rem;
 }
 
+@media (max-width: 1024px) {
+  .participants-controls {
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .search-participants {
+    min-width: 240px;
+    width: 100%;
+  }
+
+  .participants-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .request-filter-row {
     flex-direction: column;

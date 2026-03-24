@@ -185,6 +185,16 @@
   color: #ffffff;
 }
 
+@media (max-width: 1024px) {
+  .auth-page {
+    padding: 18px;
+  }
+
+  .auth-card {
+    max-width: 460px;
+  }
+}
+
 @media (max-width: 480px) {
   .auth-card {
     padding: 20px 18px;
