@@ -1,6 +1,7 @@
 package com.example.FireServiceSystem.user.dto;
 
 import com.example.FireServiceSystem.user.entity.User;
+import com.example.FireServiceSystem.user.entity.UserRole;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -39,7 +40,8 @@ public class UserResponse {
         if (includeSensitive) {
             response.setPassword(user.getPassword());
         }
-        response.setUserType(user.getUserType().name());
+        UserRole userRole = user.getUserType() == null ? UserRole.USER : user.getUserType();
+        response.setUserType(userRole.name());
         response.setBirthdate(user.getBirthdate());
         response.setGender(user.getGender());
         response.setCountry(user.getCountry());

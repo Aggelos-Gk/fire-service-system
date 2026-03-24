@@ -32,10 +32,11 @@ public class AuthController {
 
         if (user.isPresent()) {
             User found = user.get();
+            UserRole role = found.getUserType() == null ? UserRole.USER : found.getUserType();
             return Map.of(
                     "status", "SUCCESS",
                     "username", found.getUsername(),
-                    "role", found.getUserType().name(),
+                    "role", role.name(),
                     "token", UUID.randomUUID().toString(),
                     "userId", String.valueOf(found.getId())
             );

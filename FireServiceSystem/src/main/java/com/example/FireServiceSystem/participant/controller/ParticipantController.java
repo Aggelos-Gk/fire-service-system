@@ -287,7 +287,8 @@ public class ParticipantController {
 
         userRepository.findById(participant.getUserId()).ifPresent(user -> {
             response.setUsername(user.getUsername());
-            response.setUserType(user.getUserType().name());
+            UserRole role = user.getUserType() == null ? UserRole.USER : user.getUserType();
+            response.setUserType(role.name());
             response.setCountry(user.getCountry());
             response.setMunicipality(user.getMunicipality());
             response.setJob(user.getJob());
