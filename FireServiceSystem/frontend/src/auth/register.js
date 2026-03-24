@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./register.css";
+import { fetchJson } from "../utils/api";
 
 function Register() {
   const navigate = useNavigate();
@@ -92,10 +93,10 @@ function Register() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8080/api/auth/register', {
-        method: 'POST',
+      const data = await fetchJson("/api/auth/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           username: formData.username,
@@ -115,8 +116,6 @@ function Register() {
           lon: formData.lon ? parseFloat(formData.lon) : null
         })
       });
-
-      const data = await response.json();
 
       // CHANGED: Check for "success" field, not "status"
       if (data.success === true) {
