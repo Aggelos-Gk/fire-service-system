@@ -1,44 +1,133 @@
-# FireServiceSystem (Supabase Postgres)
+# Fire Service System
 
-This project is configured to run against **Supabase Postgres** (no H2 console).
+**Live Website:** [https://fire-service-system-frontend-production.up.railway.app/](https://fire-service-system-frontend-production.up.railway.app/)
 
-## Setup
+## Project Background
+This web application is a **reconstruction** of the Computer Science Department project for course **CS359 (2024)**.
 
-1. In Supabase SQL Editor, run `database/supabase_init.sql`.
-2. Create a local `.env` (or `.env.local`) file in the repo root (it is gitignored):
+It was designed and implemented by [Aggelos Gkogkosis](https://github.com/Aggelos-Gk), with the goal of delivering a complete, production-style emergency coordination platform with role-based access and real-time operational workflows.
 
+## What This System Does (User View)
+The Fire Service System is an emergency coordination platform where users can:
+
+- Report and monitor incidents
+- View incident history and updates
+- Exchange operational messages
+- Request participation in active incidents
+- Manage profile and account information
+
+The platform supports role-based access:
+
+- `Guest`: can view public dashboard/incident information
+- `User`: can report and track activity
+- `Volunteer`: can join incidents and participate in response workflows
+- `Admin`: can manage users, monitor all activity, and coordinate system operations
+
+## Core Features
+
+- Incident management with statuses and timeline visibility
+- Role-aware dashboards and protected pages
+- Messaging between participants and system users
+- Volunteer request/approval flow
+- Notification center for important updates
+- Responsive UI for desktop, tablet, and mobile
+
+## Project Structure
+
+```text
+FireServiceSystem/
+├── src/                    # Spring Boot backend source
+│   ├── main/java/...       # Controllers, services, entities, repositories
+│   └── main/resources/     # App config, SQL scripts, templates
+├── frontend/               # React frontend app
+│   ├── src/auth/           # Login/Register pages
+│   ├── src/dashboard/      # Dashboard and feature modules
+│   └── src/utils/          # API/session/helpers
+├── database/
+│   └── supabase_init.sql   # DB initialization script
+├── pom.xml                 # Maven backend config
+└── README.md
 ```
+
+## Technologies and Languages
+
+- Backend: `Java 17`, `Spring Boot`, `Spring Web`, `Spring Data JPA`
+- Database: `PostgreSQL (Supabase)`
+- Frontend: `React`, `React Router`, `CSS`
+- Build tools: `Maven`, `npm`
+- Optional deployment: `Railway`
+
+## Local Setup
+
+If you want to run your own instance of this project, clone it from Git and follow the setup steps below:
+
+```bash
+git clone <repository-url>
+cd FireServiceSystem
+```
+
+### 1. Database Setup (Supabase)
+Run in Supabase SQL Editor:
+
+```sql
+database/supabase_init.sql
+```
+
+Create a local `.env` or `.env.local` in repo root:
+
+```env
 SUPABASE_DB_JDBC_URL=jdbc:postgresql://db.<project-ref>.supabase.co:5432/postgres?sslmode=require
 SUPABASE_DB_USER=postgres
 SUPABASE_DB_PASSWORD=<your-db-password>
 ```
 
-Alternative (single var): you can also set `DATABASE_URL` (the `postgresql://...` connection string); the app will derive the JDBC URL/user/password automatically.
+Alternative: set `DATABASE_URL` (`postgresql://...`) and the backend can derive JDBC settings.
 
-## Run
+### 2. Run Backend
 
-```
+```bash
 ./mvnw spring-boot:run
 ```
 
-If Maven exits immediately, the app failed to start; check the console error output (most commonly missing/incorrect `SUPABASE_DB_JDBC_URL` or password).
+### 3. Run Frontend
 
-## Optional: DB connectivity smoke test
-
-Runs only when `RUN_SUPABASE_SMOKE_TESTS=true` is set, and reads Supabase credentials from env vars or `.env`:
-
+```bash
+cd frontend
+npm install
+npm start
 ```
+
+Frontend default URL: `http://localhost:3000`
+
+## Testing
+
+Backend tests:
+
+```bash
+./mvnw test
+```
+
+Frontend tests:
+
+```bash
+cd frontend
+CI=true npm test -- --watchAll=false
+```
+
+Optional Supabase connectivity smoke test:
+
+```bash
 RUN_SUPABASE_SMOKE_TESTS=true ./mvnw test -Dtest=SupabaseDatabaseSmokeTest
 ```
 
-## Deploy to Railway
+## Deployment (Railway)
 
-Use two Railway services from the same GitHub repo:
+Use two services from the same repository:
 
-1. `backend` service (root directory: repository root)
+1. `backend` service (root directory: project root)
 2. `frontend` service (root directory: `frontend`)
 
-### Backend service settings
+Backend service:
 
 - Build command: `mvn -DskipTests clean package`
 - Start command: `./start-backend.sh`
@@ -48,14 +137,15 @@ Use two Railway services from the same GitHub repo:
   - `SUPABASE_DB_PASSWORD`
   - `HIBERNATE_DDL_AUTO=validate`
   - `APP_CORS_ALLOWED_ORIGINS=https://<frontend-domain>`
-    - For preview/static domains you can use patterns too, e.g. `https://*.up.railway.app`
 
-### Frontend service settings
+Frontend service:
 
-- Root directory: `frontend`
 - Build command: `npm install && npm run build`
 - Start command: `npm run start:railway`
-- Required env vars:
+- Required env var:
   - `REACT_APP_API_BASE_URL=https://<backend-domain>`
 
-After first deploy, copy each generated Railway domain and set the matching env vars above, then redeploy both services.
+## Notes
+
+- This project is intended as an educational reconstruction and portfolio-quality system.
+- If backend startup fails immediately, check DB credentials in `.env` first.
