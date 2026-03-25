@@ -1,7 +1,18 @@
 # Fire Service System
 
-## Academic Context
-This web app is a **reconstruction** of the Computer Science Department project for course **CS359 (year 2024)**, created by **Aggelos Gkogkosis**.
+**Live Website:** [https://fire-service-system-frontend-production.up.railway.app/](https://fire-service-system-frontend-production.up.railway.app/)
+
+### Test Users
+If you want to test the platform quickly without creating a new account, you can use:
+
+- `Admin`: `admin` / `admin123!`
+- `Simple User`: `simple_user_1` / `user123!`
+- `Volunteer`: `volunteer_maria` / `vol123!`
+
+## Project Background
+This web application is a **reconstruction** of the Computer Science Department project for course **CS359 (2024)**.
+
+It was designed and implemented by [Aggelos Gkogkosis](https://github.com/Aggelos-Gk), with the goal of delivering a complete, production-style emergency coordination platform with role-based access and real-time operational workflows.
 
 ## What This System Does (User View)
 The Fire Service System is an emergency coordination platform where users can:
@@ -54,6 +65,13 @@ FireServiceSystem/
 - Optional deployment: `Railway`
 
 ## Local Setup
+
+If you want to run your own instance of this project, clone it from Git and follow the setup steps below:
+
+```bash
+git clone <repository-url>
+cd FireServiceSystem
+```
 
 ### 1. Database Setup (Supabase)
 Run in Supabase SQL Editor:
